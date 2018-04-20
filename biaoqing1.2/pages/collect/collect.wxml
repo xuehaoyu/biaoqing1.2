@@ -1,0 +1,31 @@
+<!--pages/collect/collect.wxml-->
+<view class='collect-body'>
+  <view class='collect-top'>
+     <image class='user-photo' src='{{userphoto}}'></image>
+     <view class='user-nick'>{{usernick}}</view>
+     <view class='top-btn'>
+        <view class='kefu-btn'>
+           <text>联系客服</text>
+           <image src='../../imgs/kefu.png'></image>
+           <button open-type='concat'></button>
+        </view>
+        <view class='share-btn'>
+          <text>分享</text>
+          <image src='../../imgs/share.png'></image>
+          <button open-type='share'></button>
+        </view>
+     </view>
+  </view>
+  <view class='collect-center'></view>
+  <view class='collect-list' wx:if="{{list.length > 0}}">
+     <view class='collect-item'>
+        <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+     </view>
+  </view>
+  <view class='no-collect' wx:else>
+      <image src='../../imgs/no-collect.png'></image>
+      <view class='no-font'>还没收藏表情哦</view>
+  </view>
+</view>
+<!--底部线  -->
+<view class='bottom-line'></view>

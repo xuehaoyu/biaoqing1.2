@@ -1,0 +1,39 @@
+/* component/more-fing/swiper/swiper.wxss */
+.card{
+  background:#fff;
+  border-radius: 10rpx;
+  padding-bottom: 20rpx;
+}
+.title-box{
+  padding:20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid rgba(160,160,160,0.2);
+  margin-bottom: 10rpx;
+}
+.title{
+  display: block;
+  line-height: 40rpx;
+  margin-bottom: 8rpx;
+  font-size: 35rpx;
+  font-weight: 300;
+  white-space:nowrap;
+  overflow:hidden;   
+  text-overflow:ellipsis;
+  -webkit-font-smoothing: antialiased;
+}
+.sm-title{
+  font-size: 28rpx;
+  color:rgba(0,0,0,0.4);
+}
+.content{
+  /* background:#eee;
+  font-size: 30rpx;
+  color:rgba(0,0,0,0.7); */
+  margin:0 20rpx; 
+  /* padding:15rpx 10rpx 10rpx; */
+  /* -webkit-font-smoothing: antialiased; */
+}
+.image{
+  height:300rpx;
+  width:650rpx;
+}

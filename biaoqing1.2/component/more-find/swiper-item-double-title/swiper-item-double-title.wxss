@@ -1,0 +1,38 @@
+/* component/more-fing/swiper/swiper.wxss */
+.swiper{
+  height:320rpx;
+  background:#fff;
+  border-radius: 10rpx;
+}
+.appList{
+  height:100%;
+  width:100%;
+}
+.swiperItem{
+  text-align: center;
+}
+.swiperItem-img-box{
+  width:210rpx;
+  height:210rpx;
+  margin: 0 auto;
+  /* background: rgba(0,0,0,0.1); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiperItem-image{
+  width:180rpx;
+  height:180rpx;
+  border-radius: 5rpx;
+}
+/*文字标题1 的样式*/
+.itemWord-title1{
+  height:44rpx;
+  overflow: hidden;
+}
+.itemWord-title2{
+  height:44rpx;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: rgba(0,0,0,0.3);
+}

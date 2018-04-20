@@ -1,0 +1,26 @@
+<!--pages/search/search.wxml-->
+<view class='search-body'>
+  <view class='search-top'>
+    <view class='search-input'>
+      <image src='../../imgs/search.png'></image>
+      <input></input>
+    </view>
+    <view class='search-btn'>搜索</view>
+  </view>
+  <view class='self-result'>
+    <view class='self-title'>共搜索到3个表情</view>
+    <view class='self-list'>
+      <view class='self-item'>
+        <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+      </view>
+    </view>
+  </view>
+  <view class='other-result'>
+    <view class='other-title'>共搜索到3个表情来自其他频道</view>
+    <view class='other-list'>
+      <view class='other-item'>
+        <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+      </view>
+    </view>
+  </view>
+</view>

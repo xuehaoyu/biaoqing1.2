@@ -1,0 +1,26 @@
+<!--pages/rank/rank.wxml-->
+<view class='rank-body'>
+   <view class='top-fill'></view>
+   <view class='rank-top'>
+      <view class='rank-topline'></view>
+      <view class='rank-title'>每周人气排行榜</view>
+   </view>
+   <!--排行榜列表  -->
+   <view class='rank-list'>
+      <view class='rank-item'>
+          <view class='rank-img'>
+             <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+          </view>
+          <view class='rank-info'>
+            <view class='info-top'>
+              <view class='info-title'>笨猫表情包</view>
+              <view class='collect-num'>
+                <image src='../../imgs/collect-more.png'></image>
+                <text>123456</text>
+              </view>
+            </view>
+            <view class='info-dec'>描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</view>
+          </view>
+      </view>
+   </view>
+</view>

@@ -1,0 +1,39 @@
+/* component/more-fing/swiper/swiper.wxss */
+.card{
+  background:#fff;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title-box{
+  padding:20rpx;
+  padding-bottom: 10rpx; 
+  margin-bottom: 10rpx;
+  width:70%;
+}
+.image-right{
+  width:20%;
+  /* background: #ddd; */
+}
+/*图片的样式可能不对*/
+.image-right image{
+  height:200rpx;
+  width:100%;
+  margin-top: 15rpx;
+}
+.title{
+  display: block;
+  line-height: 40rpx;
+  margin-bottom: 8rpx;
+  font-size: 35rpx;
+  font-weight: 300;
+  white-space:nowrap;
+  overflow:hidden;   
+  text-overflow:ellipsis;
+  -webkit-font-smoothing: antialiased;
+}
+.sm-title{
+  font-size: 28rpx;
+  color:rgba(0,0,0,0.4);
+}

@@ -1,0 +1,4 @@
+<view class='notify {{className}}' animation="{{animation}}">
+  <view class='notif' bindtap='slove'><text>关注【小程序框架】git 库，体验更多开发乐趣</text></view>
+  <view class='icon' bindtap="close"><text class='iconfont icon-wrong'></text></view>
+</view>

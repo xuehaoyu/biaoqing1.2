@@ -1,0 +1,29 @@
+<!--对应图片中的第一个选项-->
+
+<!--
+  一些属性说明
+  indicator-dots：是否显示指示点
+  indicator-color：点的颜色
+  indicator-active-color：选中点的颜色
+  autoplay:自动播放
+  interval：时间间隔
+  circular:采用衔接滑动
+  vertical:是否纵向
+-->
+<swiper class="swiper" 
+  indicator-dots="true" 
+  indicator-color="rgba(0,0,0,0.3)"
+  indicator-active-color="#666"
+  autoplay="true"
+  interval="3000"
+  circular="true"
+>
+  <!--列表项循环,循环的里面的某一项，现在的是临时的-->
+  <block wx:for="{{d.Param}}" wx:key="index">
+    <!--预计是 列表项 点击-->
+    <swiper-item data-obj="{{item}}" bindtap='toOtherApp'>
+      <image src="{{item.ImgUrl}}" class="item-img"></image>
+    </swiper-item>
+  </block>
+</swiper> 
+

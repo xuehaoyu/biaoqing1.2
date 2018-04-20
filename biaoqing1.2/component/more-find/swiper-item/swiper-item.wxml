@@ -1,0 +1,32 @@
+<!--对应图片中的第3个选项-->
+
+<!--
+  一些属性说明
+  autoplay:自动播放
+  interval：时间间隔
+  circular:采用衔接滑动
+  PS:整个宽度是690rpx
+  previous-margin:显示前一项
+  autoplay="true"
+  interval="3000"
+  circular="true"
+  previous-margin="230rpx"
+  next-margin="230rpx"
+-->
+<swiper class="swiper" 
+  display-multiple-items="3"
+>
+  <!--列表项循环,循环的里面的某一项，现在的是临时的-->
+  <block wx:for="{{d.Param}}" wx:key="index">
+    <!--预计是 列表项 点击-->
+    <swiper-item data-obj="{{item}}" bindtap='toOtherApp' class="swiperItem">
+      <view class="swiperItem-img-box">
+        <image src="{{item.ImgUrl}}" class="swiperItem-image"></image>
+      </view>
+      <view class="itemWord">
+        {{item.Txt1}}
+      </view>
+    </swiper-item>
+  </block>
+</swiper> 
+

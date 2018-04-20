@@ -1,0 +1,5 @@
+<view wx:key="index">
+  <view data-obj="{{d.Param[0]}}" class="applist" bindtap='toOtherApp'>  
+    {{d.Param[0].Txt1}}
+  </view> 
+</view>

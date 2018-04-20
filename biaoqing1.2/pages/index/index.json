@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "formid-custom": "../../component/formid-custom/formid-custom"
+  },
+  "navigationBarTitleText": "表情包"
+}

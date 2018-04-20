@@ -1,0 +1,37 @@
+.applist {
+  width: 90%;
+  min-height: 100rpx;
+  padding: 20rpx 5%;
+  background: #fff;
+  border-radius: 10rpx;
+  position: relative;
+}
+
+.appLogo {
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  margin-top: -54rpx;
+}
+
+
+.appCon {
+  margin-left: 150rpx;
+}
+
+.appName {
+  display: block;
+  font-size: 30rpx;
+}
+
+.noDesc {
+  line-height: 100rpx;
+}
+
+.appDesc {
+  font-size: 28rpx;
+  color: #aaa;
+  display: block;
+}

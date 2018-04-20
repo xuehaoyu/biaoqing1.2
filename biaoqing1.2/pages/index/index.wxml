@@ -1,0 +1,99 @@
+<view class='index-body'>
+  <!--首页顶部搜索  -->
+  <view class='index-top'>
+    <view class='top-search'>
+      <image src='../../imgs/search.png'></image>
+      <input placeholder='搜索表情' placeholder-class="input-place"></input>
+    </view>
+    <formid-custom bind:taphandle="tap1">
+       <view class='search-btn'>搜索</view>
+    </formid-custom>
+  </view>
+  <!--首页排行 分类跳转区域  -->
+  <view class='index-go'>
+    <formid-custom bind:taphandle="goRank">
+      <view class='rank-go'>
+        <image src='../../imgs/rank.png'></image>
+        <text>排行</text>
+      </view>
+    </formid-custom>
+    <formid-custom bind:taphandle="goCate">
+      <view class='cate-go'>
+        <image src='../../imgs/cate.png'></image>
+        <text>分类</text>
+      </view>
+    </formid-custom>
+  </view>
+  <!--小编  推荐-->
+  <view class='rec-area'>
+    <view class='rec-top'>
+      <view class='rec-topleft'>
+        <view class='rec-topimg'><image src='../../imgs/rec.png'></image></view>
+        <view class='rec-font'>小编推荐</view>
+      </view>
+      <formid-custom  bind:taphandle="recMore">
+        <view class='rec-topright'>
+          <view class='rec-more'>更多</view>
+          <image src='../../imgs/more.png'></image>
+        </view>
+      </formid-custom>
+    </view>
+    <view class='rec-list'>
+      <formid-custom  bind:taphandle="goDetail">
+        <view class='rec-item'>
+            <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+        </view>
+      </formid-custom>
+    </view>
+  </view>
+   <!--最新表情-->
+  <view class='new-area'>
+    <view class='new-top'>
+      <view class='new-topleft'>
+        <view class='new-topimg'><image src='../../imgs/new.png'></image></view>
+        <view class='new-font'>最新表情</view>
+      </view>
+      <formid-custom  bind:taphandle="newMore">
+        <view class='new-topright'>
+          <view class='new-more'>更多</view>
+          <image src='../../imgs/more.png'></image>
+        </view>
+      </formid-custom>
+    </view>
+    <view class='new-list'>
+      <formid-custom  bind:taphandle="goDetail">
+        <view class='new-item'>
+            <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+        </view>
+      </formid-custom>
+    </view>
+  </view>
+  <!--学套路  -->
+  <view class='study-area'>
+    <view class='study-top'>
+      <view class='study-topleft'>
+        <view class='study-topimg'><image src='../../imgs/way.png'></image></view>
+        <view class='study-font'>学套路逗朋友</view>
+      </view>
+      <formid-custom  bind:taphandle="studyMore">
+        <view class='study-topright'>
+          <view class='study-more'>更多</view>
+          <image src='../../imgs/more.png'></image>
+        </view>
+      </formid-custom>
+    </view>
+    <view class='study-list'>
+        <view class='study-item'>
+           <view class='study-img'> 
+              <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+           </view>
+           <view class='study-info'>
+              <view class='study-title'>我发现你有个问题</view>
+              <view class='study-dec'>我发现你有个问题我发现你有个问题我发现你有个问题我发现你有个问题我发现你有个问题我发现你有个问题我发现你有个问题</view>
+           </view>
+        </view>
+    </view>
+  </view>
+</view>
+<!--底部线  -->
+<view class='bottom-line'></view>

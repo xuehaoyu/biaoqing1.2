@@ -1,0 +1,8 @@
+<!--pages/find/find.wxml-->
+<view class="listContainer">
+  <view wx:for="{{list}}" wx:key="index">
+    <single-line bind:taphandle="tap1" d="{{item}}"></single-line>
+  </view>
+</view>
+<!--底部线  -->
+<view class='bottom-line'></view>

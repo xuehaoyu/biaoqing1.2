@@ -1,0 +1,43 @@
+<!--component/camera/camera/camera.wxml-->
+<view class="camera-box">
+    <view class="artwork" wx:if="{{cameraSrc}}">
+        <image class="t" src="http://img.haimi.com/Fqs7KXW60ikoWVYySPHqozN92E7G"></image>
+        <image class="b" src="http://img.haimi.com/Fgbv2XUpOh691HO3sNA-4Rtty3uu"></image>
+        <image class="original" src="{{cameraSrc}}" bindload="_imageLoad" style="width:{{image.width}}rpx; height:{{image.height}}rpx;" />
+        <image class="line" src="http://img.haimi.com/FiPYDSN7hf4KOsjPt4unusyD_kuH"></image>
+    </view>
+    <view class="camera" wx:else>
+        <camera wx:if="{{canUse}}" device-position="{{devicePsition}}" flash="{{flash}}" binderror="_error" class="camera">
+            <cover-view class="controls">
+                <cover-view class="box">
+                    <cover-image class="img" src="https://img.haimi.com/FvCb1eF5FwGLbRvldO8CJdrgKaOV" />
+                </cover-view>
+                <cover-view class="mask photo-id" wx:if="{{type === 'normal'}}">
+                    <cover-image class="img" src="https://img.haimi.com/Fv0hKmpfrPqWGhhSEk8iwTAbVl1D" />
+                    <cover-view class="text">抚平纸张,平行与参考线拍摄</cover-view>
+                </cover-view>
+                <cover-view class="mask drive-id" wx:if="{{type === 'drive'}}">
+                    <cover-image class="img" src="http://img.haimi.com/Fl7TAInudPVVEXUTFK-0ZKv3ZYjz" />
+                    <cover-view class="text">对齐驾驶证正面</cover-view>
+                </cover-view>
+                <cover-view class="mask shenfen-id" wx:if="{{type === 'idcard'}}">
+                    <cover-image class="img" src="http://img.haimi.com/Fl7TAInudPVVEXUTFK-0ZKv3ZYjz" />
+                    <cover-image class="avatar" src="http://img.haimi.com/FsGct6m99XN8Yo9pZcX5VaNdxjX-"></cover-image>
+                    <cover-view class="text">对齐身份证正面</cover-view>
+                </cover-view>
+                <cover-view class="flash">
+                    <cover-image class="img" wx:if="{{flash === 'on'}}" bindtap="_switchFlash" src="https://img.haimi.com/FrWwhO_A1yTCQlWdeUMSb-lpZbeg" />
+                    <cover-image class="img" wx:if="{{flash === 'off'}}" bindtap="_switchFlash" src="https://img.haimi.com/FqJYzFw0r1O_rG9W6crZO5rg5YQg" />
+                </cover-view>
+                <cover-view class="turn" bindtap="_switchDevicePsition">
+                    <cover-image class="img" src="http://img.haimi.com/FoG_OjNyXlb_ubneWwBEq9PsgqYa" />
+                </cover-view>
+                <cover-view class="bottom">
+                    <cover-image bindtap="_chooseImage" class="pt" src="http://img.haimi.com/FnnnzpmuPCwIAgbXs3o4PBkUBAlx" />
+                    <cover-image class="take" bindtap="_takePhoto" src="http://img.haimi.com/Flol_208f8oC7kpnWGfZ5QuBtRZN" />
+                </cover-view>
+            </cover-view>
+        </camera>
+        <view wx:else class="camera-tips">{{cameraTips}}</view>
+    </view>
+</view>

@@ -1,0 +1,116 @@
+/* pages/report/report.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.report-body{
+  width: 100%;
+  height: 100%;
+  background: #f7f7f7;
+}
+.report-top{
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  padding: 44rpx 30rpx 30rpx;
+  color: #666666;
+}
+.report-con{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 48rpx 0 30rpx;
+  background: #ffffff;
+}
+.con-item{
+  width: 100%;
+  height: 50rpx;
+  padding: 20rpx 0 17rpx;
+  display: flex;
+  align-items: center;
+}
+.con-item image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.con-item text{
+  font-size: 30rpx;
+  padding-left: 30rpx;
+  line-height:  30rpx;
+}
+.con-line{
+  width: 654rpx;
+  height: 2rpx;
+  background: #ebebeb;
+  margin-left: 18rpx;
+}
+.write-other{
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  padding: 44rpx 30rpx 20rpx;
+  color: #666666;
+}
+.other-area{
+  width: 100%;
+  height: 160rpx;
+  background: #ffffff;
+  box-sizing: border-box;
+  padding: 30rpx;
+  margin-bottom: 28rpx;
+}
+.other-area textarea{
+  width: 100%;
+  height: 100%;
+  font-size: 30rpx;
+}
+.sure-btn{
+  width: 650rpx;
+  height: 90rpx;
+  background: #11ad17;
+  border-radius: 8rpx;
+  color: #ffffff;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 90rpx;
+  margin: 0 auto;
+}
+/*举报成功  */
+.success-body{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 80rpx 0 0 0;
+}
+.right-img{
+  width: 200rpx;
+  height: 200rpx;
+  margin: 0 auto;
+}
+.right-img image{
+  width: 200rpx;
+  height: 200rpx;
+}
+.succ-font{
+  text-align: center;
+  font-size: 40rpx;
+  line-height: 40rpx;
+  padding: 84rpx 0 36rpx;
+}
+.thank-font{
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #999999;
+  padding: 0 0 98rpx;
+}
+.back-btn{
+  width: 650rpx;
+  height: 90rpx;
+  background: #11ad17;
+  border-radius: 8rpx;
+  color: #ffffff;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 90rpx;
+  margin: 0 auto;
+}

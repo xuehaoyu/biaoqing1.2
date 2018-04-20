@@ -1,0 +1,9 @@
+.applist {
+  min-height: 50rpx;
+  padding: 20rpx 5%;
+  background: #fff;
+  border-radius: 10rpx;
+  position: relative;
+  font-size: 30rpx;
+  -webkit-font-smoothing: antialiased;
+}

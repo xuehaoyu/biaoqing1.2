@@ -1,0 +1,46 @@
+/* component/more-fing/swiper/swiper.wxss */
+.swiper{
+  background:#fff;
+  border-radius: 10rpx;
+}
+.appList{
+  height:100%;
+  width:100%;
+}
+.swiperItem{
+  text-align: center;
+  padding-top: 13rpx;
+}
+.swiperItem-img-box{
+  width:210rpx;
+  height:210rpx;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiperItem-image{
+  width:180rpx;
+  height:180rpx;
+  border-radius: 5rpx;
+}
+.itemWord{
+  background: -webkit-linear-gradient(to right, #ff8d3b , #ffb787);
+  background: linear-gradient(to right, #ff8d3b , #ffb787);
+  color:#fff;
+  width:210rpx;
+  height:50rpx;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 15rpx;
+  border-radius: 4rpx;
+}
+.swiperItem:nth-child(2n) .itemWord{
+  background: -webkit-linear-gradient(to right, #fd6ea9 , #ff98c3);
+  background: linear-gradient(to right, #fd6ea9 , #ff98c3);
+}
+.swiperItem:nth-child(3n) .itemWord{
+  background: -webkit-linear-gradient(to right, #f9cd31 , #ffdd61);
+  background: linear-gradient(to right, #f9cd31 , #ffdd61); 
+}

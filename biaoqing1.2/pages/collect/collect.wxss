@@ -1,0 +1,139 @@
+/* pages/collect/collect.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.collect-body{
+  width: 100%;
+  height: 100%;
+}
+.collect-top{
+  width: 100%;
+  height: 418rpx;
+  background: #ffffff;
+  border-top: 2rpx solid #f7f7f7;
+  padding: 42rpx 0 0 0;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+.user-photo{
+  display: block;
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.user-nick{
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+  padding: 28rpx 0 60rpx;
+}
+.top-btn{
+  width: 100%;
+  height: auto;
+  padding: 0 62rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.kefu-btn,.share-btn{
+  width: 294rpx;
+  height: 80rpx;
+  background: #ffdd00;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 80rpx;
+  position: relative;
+  font-size: 30rpx;
+  line-height: 30rpx;
+}
+.kefu-btn{
+  padding: 0 56rpx;
+}
+.kefu-btn image{
+  width: 34rpx;
+  height: 34rpx;
+}
+.share-btn image{
+  width: 34rpx;
+  height: 30rpx;
+}
+.share-btn{
+  padding: 0 88rpx;
+}
+.kefu-btn button{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 294rpx;
+  height: 80rpx;
+  opacity: 0;
+}
+.share-btn button{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 294rpx;
+  height: 80rpx;
+  opacity: 0;
+}
+/*中部填充  */
+.collect-center{
+  width: 100%;
+  height: 20rpx;
+  background: #f7f7f7;
+}
+/*收藏列表*/
+.collect-list{
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 28rpx 28rpx 0;
+  overflow: hidden;
+}
+.collect-item{
+  width: 156rpx;
+  height: 156rpx;
+  border: 2rpx solid #eeeeee;
+  float: left;
+  margin-right: 18rpx;
+  margin-bottom: 18rpx;
+}
+.collect-item:nth-child(4n){
+   margin-right: 0;
+}
+.collect-item image{
+   width: 156rpx;
+  height: 156rpx;
+}
+.no-collect{
+  width: 100%;
+  height: auto;
+  padding-top: 80rpx;
+}
+.no-collect image{
+  width: 264rpx;
+  height: 264rpx;
+  display: block;
+  margin:  0 auto;
+}
+.no-font{
+  font-size: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  color: #999999;
+  padding-top: 40rpx;
+}
+/*底部线  */
+.bottom-line{
+  width: 100%;
+  height: 2rpx;
+  background: #e0e0e0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  box-sizing: border-box;
+}

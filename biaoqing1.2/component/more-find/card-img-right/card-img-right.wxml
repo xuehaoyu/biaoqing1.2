@@ -1,0 +1,10 @@
+<!--对应图片中的第二个选项  贺卡页-->
+<view data-obj="{{d.Param[0]}}" bindtap='toOtherApp' class="card">  
+    <view class="title-box">
+      <view class="title">{{d.Param[0].Txt1}}</view>
+      <view class="sm-title">{{d.Param[0].Txt2}}</view>
+    </view>
+    <view class="image-right">
+      <image src="{{d.Param[0].ImgUrl}}" mode="widthFix"></image>
+    </view>
+</view> 

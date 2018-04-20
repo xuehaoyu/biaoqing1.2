@@ -1,0 +1,192 @@
+/* component/camera/camera/camera.wxss */
+
+page {
+    width: 100%;
+    height: 100%;
+}
+
+.camera-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.camera {
+    width: 100%;
+    height: 100%;
+}
+
+.controls {
+    width: 100%;
+    height: 100%;
+}
+
+.box .img {
+    width: 654rpx;
+    height: 926rpx;
+    margin: 0 auto;
+    margin-top: 20rpx;
+}
+
+.mask {
+    position: absolute;
+    z-index: 1;
+    top: 20rpx;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.mask .img {
+    margin: 0 auto;
+    display: block;
+    position: relative;
+}
+
+.photo-id .text {
+    position: absolute;
+    top: 260rpx;
+    width: 100%;
+    color: #fff;
+    font-size: 26rpx;
+    text-align: center;
+    text-shadow: 0 0 30rpx #000;
+}
+
+.photo-id .img {
+    width: 654rpx;
+    height: 926rpx;
+}
+
+.drive-id .img, .shenfen-id .img {
+    width: 654rpx;
+    height: 448rpx;
+    margin-top: 238rpx;
+}
+
+.drive-id .text, .shenfen-id .text {
+    position: absolute;
+    top: 730rpx;
+    width: 100%;
+    color: #fff;
+    font-size: 26rpx;
+    text-align: center;
+    text-shadow: 0 0 30rpx #000;
+}
+
+.shenfen-id .avatar {
+    width: 240rpx;
+    height: 250rpx;
+    position: absolute;
+    top: 340rpx;
+    right: 80rpx;
+}
+
+.flash {
+    position: absolute;
+    right: 80rpx;
+    top: 80rpx;
+    z-index: 10;
+}
+
+.flash .img {
+    width: 108rpx;
+    height: 108rpx;
+}
+
+.turn {
+    position: absolute;
+    left: 80rpx;
+    top: 80rpx;
+    z-index: 10;
+}
+
+.turn .img {
+    width: 72rpx;
+    height: 72rpx;
+}
+
+.bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    height: 240rpx;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.bottom .pt {
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+    left: 50rpx;
+    top: 90rpx;
+}
+
+.bottom .take {
+    width: 140rpx;
+    height: 140rpx;
+    position: absolute;
+    left: 308rpx;
+    top: 50rpx;
+}
+
+.camera-tips {
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 200rpx;
+}
+
+.artwork {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.artwork .t {
+    width: 750rpx;
+    height: 80rpx;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+
+.artwork .b {
+    width: 750rpx;
+    height: 80rpx;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+}
+
+.artwork .original {
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+.artwork .line {
+    width: 750rpx;
+    height: 120rpx;
+    position: absolute;
+    top: -110rpx;
+    display: block;
+    animation: myScan 2s infinite linear;
+}
+
+@keyframes myScan {
+    0% {
+        transform: translateY(0rpx);
+    }
+
+    100% {
+        transform: translateY(1400rpx);
+    }
+}

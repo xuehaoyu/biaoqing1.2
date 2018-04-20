@@ -1,0 +1,17 @@
+/* component/more-fing/swiper/swiper.wxss */
+swiper{
+  height:300rpx;
+}
+.swiper{
+  height:300rpx;
+  background:#fff;
+  border-radius: 10rpx;
+}
+.appList{
+  height:100%;
+  width:100%;
+}
+.item-img{
+  width:690rpx;
+  height:300rpx;
+}

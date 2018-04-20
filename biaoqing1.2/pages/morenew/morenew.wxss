@@ -1,0 +1,57 @@
+/* pages/morenew/morenew.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background: #f7f7f7;
+}
+.new-body{
+  width: 100%;
+  height: 100%;
+  padding: 22rpx 0 0 0;
+}
+.new-list{
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 0 28rpx;
+  background: #ffffff;
+}
+.new-item{
+  width: 100%;
+  height: 144rpx;
+  padding: 38rpx 0 40rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  display: flex;
+  justify-content: space-between;
+}
+.new-img{
+  width: 142rpx;
+  height: 142rpx;
+  border: 1rpx solid #eeeeee;
+}
+.new-img image{
+  width: 142rpx;
+  height: 142rpx;
+}
+.new-info{
+  width: 508rpx;
+  height: 144rpx;
+  box-sizing: border-box;
+  padding-top: 8rpx;
+}
+.info-title{
+  width: 100%;
+  height: 30rpx;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 26rpx;
+}
+.info-dec{
+  width: 100%;
+  height: 80rpx;
+  overflow: auto;
+  font-size: 28rpx;
+  color: #999999;
+}

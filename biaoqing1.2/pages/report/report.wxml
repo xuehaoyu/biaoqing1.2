@@ -1,0 +1,28 @@
+<!--pages/report/report.wxml-->
+<view class='report-body' hidden='{{!sureFlag}}'>
+    <view class='report-top'>请选择举报内容</view>
+    <view class='report-con'>
+      <formid-custom wx:for="{{list}}" wx:key="{{index}}" bind:taphandle="selectCon" data-index="{{index}}" data-con="{{item.con}}">
+        <view class='con-item'>
+            <image src="{{item.state?'../../imgs/select.png':'../../imgs/unselect.png'}}"></image>
+            <text>{{item.con}}</text>
+        </view>
+        <view class='con-line'></view>
+      </formid-custom>
+    </view>
+    <view class='write-other'>填写其他原因</view>
+    <view class='other-area'>
+      <textarea placeholder='请填写您举报投诉的理由'></textarea>
+    </view>
+    <formid-custom bind:taphandle="sureReport">
+        <view class='sure-btn'>确认举报投诉</view>
+    </formid-custom>
+</view>
+<view class='success-body' hidden='{{sureFlag}}'>
+    <view class='right-img'><image src='../../imgs/right.png'></image></view>
+    <view class='succ-font'>举报成功</view>
+    <view class='thank-font'>感谢举报,表情搜搜神器团队会马上处理</view>
+    <formid-custom bind:taphandle="backDetail">
+        <view class='back-btn'>返回</view>
+    </formid-custom>
+</view>

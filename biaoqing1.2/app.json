@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/collect/collect",
+    "pages/find/find",
+    "pages/jump/jump",
+    "pages/rank/rank",
+    "pages/cate/cate",
+    "pages/detail/detail",
+    "pages/search/search",
+    "pages/moreway/moreway",
+    "pages/morerec/morerec",
+    "pages/morenew/morenew",
+    "pages/report/report"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "iconPath": "./imgs/index-no.png",
+        "selectedIconPath": "./imgs/index.png",
+        "pagePath": "pages/index/index",
+        "text": "表情"
+      },
+      {
+        "iconPath": "./imgs/find-no.png",
+        "selectedIconPath": "./imgs/find.png",
+        "pagePath": "pages/find/find",
+        "text": "更多工具"
+      },
+      {
+        "iconPath": "./imgs/collect-no.png",
+        "selectedIconPath": "./imgs/collect.png",
+        "pagePath": "pages/collect/collect",
+        "text": "收藏"
+      }
+    ]
+  }
+}

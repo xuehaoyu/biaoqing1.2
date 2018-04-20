@@ -1,0 +1,19 @@
+@import 'iconfont.wxss';
+.notify {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  transition: transform .3s ease-in-out,height .3s ease-in-out;
+  box-sizing: border-box;
+  background-color: #656565;
+}
+.iconfont {
+  color: #fff;
+}
+.notif {
+  padding: 6px 0;
+  font-size: 14px;
+  color: #fff;
+  flex: 1;
+}

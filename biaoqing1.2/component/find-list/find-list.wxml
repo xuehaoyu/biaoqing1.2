@@ -1,0 +1,13 @@
+<view wx:for="{{list}}" wx:key="index" data-obj="{{item}}" class="applist" bindtap='toOtherApp'>  
+  <image wx:if="{{item.AppLogo != ''}}" src="{{item.AppLogo}}" class="appLogo"></image>
+  <image wx:else src="noAvatarUrl.jpg" class="appLogo"></image>
+  <view class="appCon">
+    <view wx:if="{{item.Description == null}}">
+      <text class="appName noDesc">{{item.Name}}</text>
+    </view>
+    <view wx:else>
+      <text class="appName">{{item.Name}}</text>
+      <text class="appDesc">{{item.Description}}</text>
+    </view>
+  </view>
+</view> 

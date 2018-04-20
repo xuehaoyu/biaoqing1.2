@@ -1,0 +1,92 @@
+/* pages/cate/cate.wxss */
+.cate-body{
+  width: 100%;
+  height: 100%;
+}
+.cate-top{
+  width: 100%;
+  height: 89rpx;
+  border-top: 1rpx solid #f7f7f7;
+  border-bottom: 1rpx solid #e0e0e0;
+  padding: 0 124rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.cate-one,.cate-two{
+  width: 128rpx;
+  height: 100%;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 87rpx;
+  position: relative;
+}
+.bottom-line{
+  width: 128rpx;
+  height: 4rpx;
+  border-radius: 4rpx;
+  background: #000000;
+  position: absolute;
+  left: 0;
+  bottom: -1rpx;
+}
+.cate-area{
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+.cate-list{
+  width: 200rpx;
+  height: auto;
+}
+.cate-item{
+  width: 200rpx;
+  height: 102rpx;
+  box-sizing: border-box;
+  padding: 36rpx 0 0 28rpx;
+  background: #f7f7f7;
+  border-bottom: 1rpx solid #e5e5e5;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  overflow: hidden
+}
+/*表情包区域  */
+.cate-con{
+  width: 550rpx;
+  height: auto;
+  box-sizing: border-box;
+  padding: 0 28rpx;
+}
+.con-item{
+  width: 100%;
+  height: 144rpx;
+  padding: 38rpx 0 38rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  display: flex;
+  justify-content: space-between;
+}
+.item-img{
+  width: 142rpx;
+  height: 142rpx;
+  border: 1rpx solid #eeeeee;
+}
+.item-img image{
+  width: 142rpx;
+  height: 142rpx;
+}
+.con-info{
+  width: 322rpx;
+  height: 144rpx;
+  padding: 8rpx 0 0 0;
+  overflow: hidden;
+}
+.info-title{
+  font-size: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  margin-bottom: 20rpx;
+}
+.tag-area{
+  font-size: 28rpx;
+  color: #999999;
+}
