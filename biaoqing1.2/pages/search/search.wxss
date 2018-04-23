@@ -39,6 +39,10 @@ page{
   font-size: 28rpx;
   width: 100%;
 }
+.input-place{
+  font-size: 28rpx;
+  color: #cccccc;
+}
 .search-btn{
   width: 128rpx;
   height: 80rpx;

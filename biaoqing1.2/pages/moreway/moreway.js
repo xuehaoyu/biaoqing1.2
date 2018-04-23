@@ -5,16 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    wayList: [],
+    hasMore: true,
+    page: 1,
+    pagesize:8,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getWay();
+  },  
+  // 获取推荐
+  getWay: function () {
+    if (!this.data.hasMore) return;
+    app.req.way(this.data.page, this.data.pagesize).then(res => {
+      console.log(res);
+      if (res.f === 1) {
+        let hasMore = this.data.hasMore;
+        let wayList = this.data.wayList;
+        if (res.d.Page * res.d.Pagesize > res.d.TotalCount) {
+          hasMore = false;
+        }
+        wayList = wayList.concat(res.d.Results);
+        this.setData({
+          hasMore: hasMore,
+          wayList: wayList,
+          page: this.data.page + 1,
+        })
+      }
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -54,7 +76,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.getWay();
   },
 
   /**

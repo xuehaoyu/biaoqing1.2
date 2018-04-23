@@ -1,13 +1,13 @@
 <!--pages/morerec/morerec.wxml-->
 <view class='way-body'>
   <view class='way-list'>
-      <view class='way-item'>
+      <view class='way-item' wx:for="{{recList}}" wx:key="{{item.GroupID}}">
         <view class='way-img'>
-          <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+          <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
         </view>
         <view class='way-info'>
-          <view class='info-title'>重复我的第一个字</view>
-          <view class='info-dec'>重复我的第一个字重复我的第一个字重复我的第一个字重复我的第一个字</view>
+          <view class='info-title'>{{item.GroupName}}</view>
+          <view class='info-dec'>{{item.Tags}}</view>
         </view>
       </view>
   </view>

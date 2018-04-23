@@ -7,19 +7,19 @@
    </view>
    <!--排行榜列表  -->
    <view class='rank-list'>
-      <view class='rank-item'>
+      <view class='rank-item' wx:for="{{rank}}" wx:key="{{item.GroupID}}">
           <view class='rank-img'>
-             <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+             <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
           </view>
           <view class='rank-info'>
             <view class='info-top'>
-              <view class='info-title'>笨猫表情包</view>
+              <view class='info-title'>{{item.GroupName}}</view>
               <view class='collect-num'>
                 <image src='../../imgs/collect-more.png'></image>
-                <text>123456</text>
+                <text>{{item.CollectCount}}</text>
               </view>
             </view>
-            <view class='info-dec'>描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</view>
+            <view class='info-dec'>{{item.GroupName}}</view>
           </view>
       </view>
    </view>

@@ -32,7 +32,7 @@ page{
   display: flex;
   margin-bottom: 20rpx;
 }
-.report-btn,.share-btn,.save-btn,.collect-btn{
+.report-btn,.share-btn,.save-btn,.collect-btn,.zan-btn{
   width: 152rpx;
   height: 148rpx;
   border-right: 2rpx solid #eeeeee;
@@ -63,6 +63,12 @@ page{
 .collect-btn image{
   width: 40rpx;
   height: 40rpx;
+  display: block;
+  margin: 0 auto;
+}
+.zan-btn image{
+  width: 38rpx;
+  height: 36rpx;
   display: block;
   margin: 0 auto;
 }

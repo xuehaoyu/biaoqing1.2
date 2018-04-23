@@ -11,6 +11,8 @@ Page({
     usernick:"",
     // 收藏列表
     list:[],
+    page:1,
+    hasMore:true,
   },
 
   /**
@@ -18,6 +20,32 @@ Page({
    */
   onLoad: function (options) {
     this.getInfo();
+    // 获取收藏列表
+    this.getList();
+  },
+  // 获取收藏列表
+  getList:function(){
+    if (!this.data.hasMore) return;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    app.req.collect(this.data.page).then(res=>{
+      console.log(res);
+      wx.hideLoading();
+      if(res.f === 1){
+        let hasMore = this.data.hasMore;
+        let list = this.data.list;
+        if (res.d.Page * res.d.Pagesize > res.d.TotalCount) {
+          hasMore = false;
+        }
+        list = list.concat(res.d.Results);
+        this.setData({
+          hasMore: hasMore,
+          list: list,
+          page: this.data.page + 1,
+        })
+      }
+    })
   },
   // 获取用户信息
   getInfo: function () {
@@ -122,7 +150,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.getList();
   },
 
   /**

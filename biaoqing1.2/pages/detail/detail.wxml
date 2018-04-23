@@ -1,46 +1,64 @@
 <!--pages/detail/detail.wxml-->
 <view class='detail-body'>
     <view class='detail-top'>
-      <view class='top-img'>
-        <image src='../../imgs/timg.jpg' mode='widthFix'></image>
-      </view>  
+      <formid-custom bind:taphandle="previewImg" data-imgurl="{{topImg.Url}}">
+        <view class='top-img'>
+          <image src='{{topImg.Url}}' mode='widthFix'></image>
+        </view>  
+      </formid-custom>
     </view>
     <view class='btn-area'>
-      <formid-custom bind:taphandle="goReport">
+      <formid-custom bind:taphandle="goReport" data-imgid="{{topImg.ImageID}}">
         <view class='report-btn'>
           <image src='../../imgs/report.png'></image>
           <view class='btn-font'>投诉举报</view>
         </view>
       </formid-custom>
-       <view class='share-btn'>
-        <image src='../../imgs/share-detail.png'></image>
-        <view class='btn-font'>推荐给好友</view>
-      </view>
-       <view class='save-btn'>
-        <image src='../../imgs/save.png'></image>
-        <view class='btn-font'>保存</view>
-      </view>
-       <view class='collect-btn'>
-        <image src='../../imgs/favorite-un.png'></image>
-        <view class='btn-font'>收藏</view>
-      </view>
-      <view class='collect-btn'>
-        <image src='../../imgs/zan.png'></image>
-        <view class='btn-font'>赞赏</view>
-      </view>
+      <formid-custom bind:taphandle="recFriends" data-imgurl="{{topImg.Url}}">
+        <view class='share-btn' >
+          <image src='../../imgs/share-detail.png'></image>
+          <view class='btn-font'>推荐给好友</view>
+        </view>
+      </formid-custom>
+      <formid-custom bind:taphandle="saveImg" data-imgurl="{{topImg.Url}}">
+        <view class='save-btn'>
+          <image src='../../imgs/save.png'></image>
+          <view class='btn-font'>保存</view>
+        </view>
+      </formid-custom>
+      <formid-custom wx:if="{{topImg.IsFavorite == '1'}}" bind:taphandle="collectImg" data-imgid="{{topImg.ImageID}}">
+        <view class='collect-btn'>
+          <image src="{{collectFlag?'../../imgs/favorite.png':'../../imgs/favorite-un.png'}}"></image>
+          <view class='btn-font'>{{collectFlag?"已收藏":"收藏"}}</view>
+        </view>
+      </formid-custom>
+      <formid-custom wx:else bind:taphandle="collectImg" data-imgid="{{topImg.ImageID}}">
+        <view class='collect-btn'>
+          <image src="{{collectFlag?'../../imgs/favorite.png':'../../imgs/favorite-un.png'}}"></image>
+          <view class='btn-font'>{{collectFlag?"已收藏":"收藏"}}</view>
+        </view>
+      </formid-custom>
+      <formid-custom bind:taphandle="giveMoney" data-imgid="{{topImg.ImageID}}">
+        <view class='zan-btn'>
+          <image src='../../imgs/zan.png'></image>
+          <view class='btn-font'>赞赏</view>
+        </view>
+      </formid-custom>
     </view>
     <!--表情组图片  -->
     <view class='group-area'>
         <view class='group-top'>
             <view class='top-line'></view>
-            <view class='top-font'>笨笨猫相关表情</view>
+            <view class='top-font'>{{title}}</view>
         </view>
         <view class='tag-list'>
           <text>#标签</text>
         </view>
         <view class='group-list'>
-            <view class='group-item'>
-              <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+            <view class='group-item' wx:for="{{list}}" wx:key="{{item.ImageID}}">
+              <formid-custom bind:taphandle="selectTop" data-topimg="{{item}}">
+                <image src='{{item.Url}}' mode='aspectFill'></image>
+              </formid-custom>
             </view>
         </view>
     </view>

@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -66,16 +66,28 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "search",
 					"pathName": "pages/search/search",
-					"query": ""
+					"query": "fonts=哈士奇"
 				},
 				{
 					"id": -1,
 					"name": "detail",
 					"pathName": "pages/detail/detail",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "morerec",
+					"pathName": "pages/morerec/morerec",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "waydetail",
+					"pathName": "pages/waydetail/waydetail",
+					"query": "fonts=哈士奇"
 				}
 			]
 		}

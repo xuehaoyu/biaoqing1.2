@@ -22,10 +22,22 @@ let url = {
     find: `${config.commonHost}/wxapps/get-group-apps`,
     infofind: `${config.commonHost}/find/infofind`,
     updateUser: `${config.commonHost}/xcx/update-user`,
+    check: `${config.commonHost}/filter/check`,
   },
   yewu: {
-    list: `${config.host}/gatherimg/listimglist`,
-    banner: `${config.host}/gatherimg/bannerimg`
+    group: `${config.host}/emoji/group-list`,
+    way: `${config.host}/emoji/group-list`,
+    wayDetail: `${config.host}/emoji/trick-detail`,
+    search: `${config.host}/emoji/search-image`,
+    sogosearch: `${config.host}/emoji/search`,
+    rank: `${config.host}/emoji/group-rank`,
+    search: `${config.host}/emoji/search-image`,
+    tags: `${config.host}/emoji/category-tags`,
+    tagGroup: `${config.host}/emoji/tag-groups`,
+    detail: `${config.host}/user/image-detail`,
+    add: `${config.host}/user/add-favorite`,
+    collect: `${config.host}/user/favorite-list`,
+    report: `${config.host}/user/complaint`,
   }
 }
 
@@ -347,6 +359,215 @@ module.exports = {
       data:{
         FindID:11
       }
+    })
+  },
+  // 检查敏感词汇
+  check: function (text) {
+    return requestPromisify({
+      url: url.common.check,
+      data: {
+        Text: text,
+      }
+    })
+  },
+  // 搜索
+  search:function(fonts,page) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.search,
+        method: 'GET',
+        data: {
+          keyword:fonts,
+          Page: page,
+          Pagesize:12,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  sogosearch: function (fonts, page) {
+    return requestPromisify({
+      url: url.yewu.sogosearch,
+      method: 'GET',
+      data: {
+        keyword: fonts,
+        Page: page,
+        Pagesize: 12,
+      }
+    })
+  },
+  // 获取表情组
+  group: function (type,page) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.group,
+        method: 'GET',
+        data: {
+          type: type,
+          Page: page,
+          Pagesize: 8,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 获取表情套路
+  way:function (page,pagesize=8) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.way,
+        method: 'GET',
+        data: {
+          Page: page,
+          Pagesize:pagesize,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 获取排行榜
+  rank: function () {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.rank,
+        method: 'GET',
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 获取分类下的标签
+  tags: function (cate) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.tags,
+        method: 'GET',
+        data:{
+          category:cate,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 获取标签下的表情组
+  tagGroup: function (tagId, excludeTagIDs, category,page) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.tags,
+        method: 'GET',
+        data: {
+          tagID: tagId,
+          excludeTagIDs: excludeTagIDs,
+          category: category,
+          Page: page,
+          Pagesize:8,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 添加收藏
+  add: function (imgid, groupid, tagID) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.add,
+        method: 'GET',
+        data:{
+          imageID: imgid,
+          groupID: groupid,
+          tagID: tagID,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 收藏列表
+  collect: function (page) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.collect,
+        method: 'GET',
+        data:{
+          Page: page,
+          Pagesize:16,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 举报
+  report: function (imgid,con,otherCon) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.report,
+        method: 'GET',
+        data: {
+          imageID:imgid,
+          type: con,
+          con: otherCon,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 获取套路详情
+  wayDetail: function (wayid) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.wayDetail,
+        method: 'GET',
+        data: {
+          trickID: wayid,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 获取表情组详情
+  detail: function (groupid,tagid,imgid) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.detail,
+        method: 'GET',
+        data: {
+          groupID: groupid,
+          tagID: tagid,
+          imageID: imgid,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
     })
   },
   // --------------------------------------------------------  

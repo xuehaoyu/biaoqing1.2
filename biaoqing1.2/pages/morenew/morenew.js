@@ -1,20 +1,43 @@
 // pages/morenew/morenew.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    newList: [],
+    hasMore: true,
+    page: 1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getNew();
   },
-
+  // 获取最新
+  getNew: function () {
+    if (!this.data.hasMore) return;
+    app.req.group(2,this.data.page).then(res => {
+      console.log(res);
+      if (res.f === 1) {
+        let hasMore = this.data.hasMore;
+        let newList = this.data.newList;
+        if (res.d.Page * res.d.Pagesize > res.d.TotalCount) {
+          hasMore = false;
+        }
+        newList = newList.concat(res.d.Results);
+        this.setData({
+          hasMore: hasMore,
+          newList: newList,
+          page: this.data.page + 1,
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -54,7 +77,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.getNew();
   },
 
   /**

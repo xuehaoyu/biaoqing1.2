@@ -1,0 +1,51 @@
+<!--pages/waydetail/waydetail.wxml-->
+<scroll-view class='way-body' scroll-y bindscroll="scrollPage" scroll-into-view="{{toView}}" >
+  <view class='img-body'>
+    <image src='{{wayurl}}' mode='widthFix'></image>
+    <view class='btn-area' hidden='{{btnFlag}}'>
+        <view class='related-btn' bindtap='scrollBottom'>
+            <image src='../../imgs/related.png'></image>
+            <text>相关表情</text>
+        </view>
+        <view class='share-btn'>
+            <image src='../../imgs/share-detail.png'></image>
+            <text>分享这个套路</text>
+            <button open-type='share'></button>
+        </view>
+    </view>
+    <view class='back-btn'  hidden='{{backFlag}}'>
+      <formid-custom bind:taphandle="backIndex">
+        <image src='../../imgs/home.png' hidden='{{btnFlag}}'></image>
+      </formid-custom>
+    </view>
+  </view>
+  <view class='btn-fix' hidden='{{!btnFlag}}'>
+        <view class='related-btn' bindtap='scrollBottom'>
+            <image src='../../imgs/related.png'></image>
+            <text>相关表情</text>
+        </view>
+        <view class='share-btn'>
+            <image src='../../imgs/share-detail.png'></image>
+            <text>分享这个套路</text>
+            <button open-type='share'></button>
+        </view>
+  </view>
+  <view class='back-fix' hidden='{{backFlag}}'>
+      <formid-custom bind:taphandle="backIndex" >
+        <image src='../../imgs/home.png' hidden='{{!btnFlag}}'></image>
+      </formid-custom>
+  </view>
+  <view id='relatedArea'>
+    <view class='related-top'>
+      <view class='top-line'></view>
+      <view class='top-fonts'>相关表情</view>
+    </view>
+    <view class='related-list'>
+        <view class='related-item' wx:for="{{imgs}}" wx:key="{{item.ImageID}}">
+          <formid-custom bind:taphandle="goDetail" data-imgid="{{item.ImageID}}">
+            <image src='{{item.Url}}' mode='aspectFill'></image>
+          </formid-custom>
+        </view> 
+    </view>
+  </view>
+</scroll-view>

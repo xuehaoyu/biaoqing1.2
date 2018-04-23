@@ -1,20 +1,33 @@
 // pages/rank/rank.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    rank:[],
+    hasMore:true,
+    page:1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getRank();
   },
-
+  getRank:function(){
+    app.req.rank().then(res => {
+      console.log(res);
+      if (res.f === 1) {
+        this.setData({
+          rank: res.d.Results,
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

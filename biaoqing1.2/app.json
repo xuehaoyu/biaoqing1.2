@@ -11,7 +11,8 @@
     "pages/moreway/moreway",
     "pages/morerec/morerec",
     "pages/morenew/morenew",
-    "pages/report/report"
+    "pages/report/report",
+    "pages/waydetail/waydetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

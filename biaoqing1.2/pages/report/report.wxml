@@ -12,7 +12,7 @@
     </view>
     <view class='write-other'>填写其他原因</view>
     <view class='other-area'>
-      <textarea placeholder='请填写您举报投诉的理由'></textarea>
+      <textarea placeholder='请填写您举报投诉的理由' bindinput='otherCon'></textarea>
     </view>
     <formid-custom bind:taphandle="sureReport">
         <view class='sure-btn'>确认举报投诉</view>

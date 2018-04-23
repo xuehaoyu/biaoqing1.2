@@ -10,14 +10,14 @@
   </view>
   <view class='cate-area'>
     <view class='cate-list'>
-        <view class='cate-item'  wx:for="{{cateList}}" wx:key="{{index}}"  style="{{cateSate[index]?'background:#ffffff;':'background:#f7f7f7;'}}" bindtap='selectCate' data-index="{{index}}">{{item}}</view>
+        <view class='cate-item'  wx:for="{{cateList}}" wx:key="{{item.TagID}}"  style="{{cateSate[index]?'background:#ffffff;':'background:#f7f7f7;'}}" bindtap='selectCate' data-index="{{index}}" data-tagid="{{item.TagID}}">{{item.TagName}}</view>
     </view>
     <view class='cate-con'>
-      <view class='con-item'>
-          <view class='item-img'><image src='../../imgs/timg.jpg' mode='aspectFill'></image></view>
+      <view class='con-item' wx:for="{{group}}" wx:key="{{item.GroupID}}">
+          <view class='item-img'><image src='{{item.ImageUrl}}' mode='aspectFill'></image></view>
           <view class='con-info'>
-              <view class='info-title'>笨笨猫表情包</view>
-              <view class='tag-area'>#笨笨猫</view>
+              <view class='info-title'>{{item.GroupName}}</view>
+              <view class='tag-area'>{{item.Tags}}</view>
           </view>
       </view>
     </view>
