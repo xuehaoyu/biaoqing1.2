@@ -18,14 +18,21 @@
   </view>
   <view class='collect-center'></view>
   <view class='collect-list' wx:if="{{list.length > 0}}">
-     <view class='collect-item'>
-        <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+     <view class='collect-item' wx:for="{{list}}" wx:key="{{item.ImageID}}">
+        <formid-custom bind:taphandle="previewImg" data-imgurl="{{item.Url}}">
+           <image src='{{item.Url}}' mode='aspectFill'></image>
+        </formid-custom>
+        <view class='collect-img'>
+          <formid-custom bind:taphandle="collectImg" data-imgid="{{item.ImageID}}" data-groupid="{{item.GroupID}}" data-tagid="{{item.TagID}}">
+             <image class='sc-img' src="{{collectFlag?'../../imgs/shoucang.png':'../../imgs/shoucang-no.png'}}"></image>
+          </formid-custom>
+        </view>
      </view>
   </view>
   <view class='no-collect' wx:else>
       <image src='../../imgs/no-collect.png'></image>
       <view class='no-font'>还没收藏表情哦</view>
-  </view>
+  </view> 
 </view>
 <!--底部线  -->
 <view class='bottom-line'></view>

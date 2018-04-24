@@ -13,6 +13,8 @@ Page({
     list:[],
     page:1,
     hasMore:true,
+    // 收藏开关
+    collectFlag:true,
   },
 
   /**
@@ -111,6 +113,27 @@ Page({
       }
     })
   },
+  // 收藏
+  collectImg: function (e) {
+    let groupid = e.currentTarget.dataset.groupid;
+    let tagid = e.currentTarget.dataset.tagid;
+    let imgid = e.currentTarget.dataset.imgid;
+    app.req.add(imgid, groupid, tagid).then(res => {
+      console.log(res);
+      this.setData({
+        collectFlag: !this.data.collectFlag,
+      })
+    })
+  },
+  // 预览图片
+  previewImg: function (e) {
+    console.log(e);
+    let imgurl = e.currentTarget.dataset.imgurl;
+    wx.previewImage({
+      current: imgurl,
+      urls: [imgurl],
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -156,7 +179,20 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '表情搜搜神器',
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

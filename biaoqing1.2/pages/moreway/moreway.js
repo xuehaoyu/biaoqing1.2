@@ -1,4 +1,6 @@
 // pages/moreway/moreway.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -20,8 +22,12 @@ Page({
   // 获取推荐
   getWay: function () {
     if (!this.data.hasMore) return;
+    wx.showLoading({
+      title: '加载中...',
+    })
     app.req.way(this.data.page, this.data.pagesize).then(res => {
       console.log(res);
+      wx.hideLoading();
       if (res.f === 1) {
         let hasMore = this.data.hasMore;
         let wayList = this.data.wayList;
@@ -36,6 +42,18 @@ Page({
         })
       }
     })
+  },
+  // 跳转至套路
+  studyWay: function () {
+    if (this.data.clickFlag) {
+      let wayid = e.currentTarget.dataset.wayid;
+      this.setData({
+        clickFlag: false,
+      })
+      wx.navigateTo({
+        url: '../waydetail/waydetail?wayid=' + wayid,
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

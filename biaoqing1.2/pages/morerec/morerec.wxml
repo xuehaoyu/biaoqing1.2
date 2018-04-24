@@ -1,14 +1,18 @@
 <!--pages/morerec/morerec.wxml-->
 <view class='way-body'>
   <view class='way-list'>
-      <view class='way-item' wx:for="{{recList}}" wx:key="{{item.GroupID}}">
+    <formid-custom bind:taphandle="goDetail" wx:for="{{recList}}" wx:key="{{item.GroupID}}" wx:key="{{item.GroupID}}">
+      <view class='way-item'>
         <view class='way-img'>
           <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
         </view>
         <view class='way-info'>
           <view class='info-title'>{{item.GroupName}}</view>
-          <view class='info-dec'>{{item.Tags}}</view>
+          <view class='info-dec'>
+            <text wx:for="{{item.Tags}}">#{{item}}</text>
+          </view>
         </view>
       </view>
+    </formid-custom> 
   </view>
 </view>

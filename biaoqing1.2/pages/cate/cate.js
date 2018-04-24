@@ -17,6 +17,8 @@ Page({
     group:[],
     page:1,
     hsaMore:true,
+
+    clickFlag:true,
   },
 
   /**
@@ -105,6 +107,19 @@ Page({
     })
     this.getTagsGroup();
   },
+  // 跳转至详情
+  goDetail: function () {
+    let state = 1;
+    let groupid = e.currentTarget.dataset.groupid;
+    if (this.data.clickFlag) {
+      this.setData({
+        clickFlag: false,
+      })
+      wx.navigateTo({
+        url: '../detail/detail?state=' + state + '&groupid=' + groupid,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -116,7 +131,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      clickFlag: true,
+    })
   },
 
   /**
@@ -144,7 +161,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.getTagsGroup();
   },
 
   /**

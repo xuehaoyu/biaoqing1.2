@@ -14,6 +14,11 @@ Page({
     listnum:0,
     page:1,
     hasMore:true,
+    // 分页
+    searchUrl: "https://pic.sogou.com/pics/json.jsp?",
+    start: 0,
+    // 请求开关
+    reqFlag: true,
     // 是否请求搜狗接口
     otherFlag:false,
     other:[],
@@ -95,12 +100,82 @@ Page({
           otherFlag: otherFlag,
         })
         if (otherFlag) {
-          this.searchOther();
+          this.reqSougo();
         }
       }
     })
   },
-  // 搜索其他的
+  // 搜索搜狗接口
+  reqSougo: function () {
+    if (!this.data.otherHas) return
+    wx.showLoading({
+      title: "正在加载...",
+    })
+    
+    if (this.data.reqFlag) {
+      let searchFont = this.data.fonts;
+      let searchUrl = this.data.searchUrl + "query=" + searchFont + "表情&st=5&start=" + this.data.start + "&xml_len=40&callback=dataCallback&reqFrom=wap_result&";
+      let imgReg = /['"]picUrl['"][:]['"]([^'"]+)['"]+/g;
+      let numReg = /['"]totalNum['"][:]([\d]+)/g;
+      wx.request({
+        url: searchUrl,
+        success: res => {
+          // 获取请求字符串
+          let dataDtr = res.data;
+          let other = this.data.other;
+          // 正则匹配表情地址
+          let imgData = dataDtr.match(imgReg);
+          // 真则匹配总数
+          let othernum = dataDtr.match(numReg)[0].slice(11);
+          console.log(othernum)
+          // 是否有更多
+          let otherHas = this.data.otherHas;
+          // 判断是否正则匹配到图片
+          if (imgData !== null) {
+            // console.log(imgData);
+            wx.hideLoading();
+            // 对图片地址处理
+            imgData = imgData.map(function (item) {
+              item = item.slice(10, -1);
+              return item;
+            })
+            // 对处理好的图片加入loadFlag(处理部分图片无法加载)
+            let imgLoad = [];
+            imgData.forEach(function (item) {
+              let obj = {};
+              obj.loadFlag = false;
+              obj.PicUrl = item;
+              imgLoad.push(obj)
+            })
+            other = other.concat(imgLoad)
+            console.log("前端请求",other);
+            this.setData({
+              other: other,
+              otherHas: otherHas,
+              othernum: othernum,
+              start: this.data.start + 40,
+            })
+          } else {
+            wx.hideLoading();
+            console.log("前端请求不到数据")
+            this.setData({
+              otherHas:false,
+            })
+          }
+        },
+        fail: res => {
+          console.log("前端请求失败了");
+          this.setData({
+            reqFlag: false,
+          });
+          this.reqSougo();
+        }
+      })
+    } else {
+      this.searchOther();
+    }
+  },
+  // 请求 后端 搜狗搜索
   searchOther:function () {
     if (!this.data.otherHas) return;
     let fonts = this.data.fonts;
@@ -113,7 +188,13 @@ Page({
         if (res.d.Page * res.d.Pagesize >= res.d.TotalCount) {
           otherHas = false;
         }
-        other = other.concat(res.d.Results);
+        let newOther = res.d.Results;
+        newOther = newOther.map((item)=>{
+          item.loadFlag = false;
+          return item;
+        })
+        other = other.concat(newOther);
+        console.log(newOther)
         this.setData({
           otherHas: otherHas,
           other: other,
@@ -144,6 +225,16 @@ Page({
     wx.previewImage({
       current: imgurl,
       urls: [imgurl],
+    })
+  },
+  // 图片加载出错
+  imageError: function (e) {
+    let indexnum = e.currentTarget.dataset.indexnum;
+    let other = this.data.other;
+    // console.log(indexnum);
+    other[indexnum].loadFlag = true;
+    this.setData({
+      other: other,
     })
   },
   /**
@@ -188,7 +279,7 @@ Page({
    */
   onReachBottom: function () {
     if(this.data.otherFlag){
-      this.searchOther();
+      this.reqSougo();
     }else{
       this.searchList();
     }

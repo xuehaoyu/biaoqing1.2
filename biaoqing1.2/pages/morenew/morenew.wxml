@@ -1,15 +1,19 @@
 <!--pages/morenew/morenew.wxml-->
 <view class='new-body'>
   <view class='new-list'>
-      <view class='new-item' wx:for="{{newList}}" wx:key="{{item.GroupID}}">
+    <formid-custom bind:taphandle="goDetail" data-groupid="{{item.GroupID}}" wx:for="{{newList}}" wx:key="{{item.GroupID}}">
+      <view class='new-item'>
         <view class='new-img'>
           <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
         </view>
         <view class='new-info'>
           <view class='info-title'>{{item.GroupName}}</view>
-          <view class='info-dec'>{{item.Tags}}</view>
+          <view class='info-dec'>
+            <text wx:for="{{item.Tags}}">#{{item}}</text>
+          </view>
         </view>
       </view>
+    </formid-custom> 
   </view>
 </view>
 

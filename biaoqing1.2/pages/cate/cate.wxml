@@ -13,13 +13,15 @@
         <view class='cate-item'  wx:for="{{cateList}}" wx:key="{{item.TagID}}"  style="{{cateSate[index]?'background:#ffffff;':'background:#f7f7f7;'}}" bindtap='selectCate' data-index="{{index}}" data-tagid="{{item.TagID}}">{{item.TagName}}</view>
     </view>
     <view class='cate-con'>
-      <view class='con-item' wx:for="{{group}}" wx:key="{{item.GroupID}}">
-          <view class='item-img'><image src='{{item.ImageUrl}}' mode='aspectFill'></image></view>
-          <view class='con-info'>
-              <view class='info-title'>{{item.GroupName}}</view>
-              <view class='tag-area'>{{item.Tags}}</view>
-          </view>
-      </view>
+      <formid-custom bind:taphandle="goDetail" wx:for="{{group}}" wx:key="{{item.GroupID}}" data-groupid="{{item.GroupID}}">
+        <view class='con-item' >
+            <view class='item-img'><image src='{{item.ImageUrl}}' mode='aspectFill'></image></view>
+            <view class='con-info'>
+                <view class='info-title'>{{item.GroupName}}</view>
+                <view class='tag-area'>{{item.Tags}}</view>
+            </view>
+        </view>
+      </formid-custom>
     </view>
   </view>
 </view>

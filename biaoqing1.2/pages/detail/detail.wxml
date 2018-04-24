@@ -14,12 +14,11 @@
           <view class='btn-font'>投诉举报</view>
         </view>
       </formid-custom>
-      <formid-custom bind:taphandle="recFriends" data-imgurl="{{topImg.Url}}">
-        <view class='share-btn' >
-          <image src='../../imgs/share-detail.png'></image>
-          <view class='btn-font'>推荐给好友</view>
-        </view>
-      </formid-custom>
+      <view class='share-btn' >
+        <image src='../../imgs/share-detail.png'></image>
+        <view class='btn-font'>推荐给好友</view>
+        <button open-type='share' data-state="2" data-imgid="{{topImg.ImageID}}"></button>
+      </view>
       <formid-custom bind:taphandle="saveImg" data-imgurl="{{topImg.Url}}">
         <view class='save-btn'>
           <image src='../../imgs/save.png'></image>
@@ -52,10 +51,15 @@
             <view class='top-font'>{{title}}</view>
         </view>
         <view class='tag-list'>
-          <text>#标签</text>
+            <formid-custom bind:taphandle="goDetail">
+                <text>#标签标签标</text>
+            </formid-custom>
+            <formid-custom wx:for="{{tagList}}" wx:key="{{item.TagID}}" bind:taphandle="goDetail" data-tagid="{{item.TagID}}">
+              <text>#{{item.TagName}}</text>
+            </formid-custom>
         </view>
         <view class='group-list'>
-            <view class='group-item' wx:for="{{list}}" wx:key="{{item.ImageID}}">
+            <view class='group-item' wx:for="{{list}}"  wx:key="{{item.ImageID}}" >
               <formid-custom bind:taphandle="selectTop" data-topimg="{{item}}">
                 <image src='{{item.Url}}' mode='aspectFill'></image>
               </formid-custom>
@@ -67,6 +71,19 @@
   <view class='share-font'>分享此套表情包</view>
   <view class='share-img'>
     <image src='../../imgs/wechat.png'></image>
-    <button open-type='share'></button>
+    <button open-type='share' data-state="1"></button>
   </view>
 </view>
+<!--教程页面  -->
+<view class='teach-body' wx:if="{{teachFlag}}">
+    <image src='{{teachImg}}' mode='widthFix'></image>
+    <view class='teach-top'>
+        <view class='teach-img'>
+          <image src='../../imgs/teach.png'></image>
+        </view>
+        <view class='teach-font'>长按发送表情给好友</view>
+        <view class='know-btn' bindtap='hasKnow'>知道了</view>
+    </view>
+</view>
+<!--合成分享图 画布  -->
+<canvas  canvas-id="myCanvas" style='width:680px;height:544px;background:#fff;position:fixed;left:-680px;top:-544rpx;'></canvas>

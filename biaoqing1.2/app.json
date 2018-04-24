@@ -12,7 +12,8 @@
     "pages/morerec/morerec",
     "pages/morenew/morenew",
     "pages/report/report",
-    "pages/waydetail/waydetail"
+    "pages/waydetail/waydetail",
+    "pages/pay/pay"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -9,7 +9,7 @@
       <view class='search-btn'>搜索</view>
     </formid-custom>
   </view>
-  <view class='self-result'>
+  <view class='self-result' hidden="{{list.length>0?false:true}}">
     <view class='self-title'>共搜索到{{listnum}}个表情</view>
     <view class='self-list'>
       <view class='self-item' wx:for="{{list}}" wx:key="{{item.ImageID}}">
@@ -22,9 +22,9 @@
   <view class='other-result' hidden='{{!otherFlag}}'>
     <view class='other-title'>共搜索到{{othernum}}个表情来自其他频道</view>
     <view class='other-list'>
-      <view class='other-item' wx:for="{{other}}" wx:key="{{index}}">
+      <view class='other-item' wx:for="{{other}}"  wx:key="{{index}}" hidden='{{item.loadFlag}}'>
         <formid-custom bind:taphandle="previewOther" data-imgurl="{{item.PicUrl}}">
-           <image src='{{item.PicUrl}}' mode='aspectFill'></image>
+           <image src='{{item.PicUrl}}'  mode='aspectFill'  binderror="imageError" data-indexnum="{{index}}"></image>
         </formid-custom>
       </view>
     </view>

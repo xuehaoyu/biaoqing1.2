@@ -10,6 +10,8 @@ Page({
     recList:[],
     hasMore:true,
     page:1,
+    // 防止双击开关
+    clickFlag:true,
   },
 
   /**
@@ -21,8 +23,12 @@ Page({
   // 获取推荐
   getRec: function () {
     if (!this.data.hasMore) return;
+    wx.showLoading({
+      title: '加载中...',
+    })
     app.req.group(1,this.data.page).then(res => {
       console.log(res);
+      wx.hideLoading();
       if (res.f === 1) {
         let hasMore = this.data.hasMore;
         let recList = this.data.recList;
@@ -38,6 +44,19 @@ Page({
       }
     })
   },
+  // 跳转至详情
+  goDetail: function () {
+    let state = 1;
+    let groupid = e.currentTarget.dataset.groupid;
+    if (this.data.clickFlag) {
+      this.setData({
+        clickFlag: false,
+      })
+      wx.navigateTo({
+        url: '../detail/detail?state=' + state + '&groupid=' + groupid,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -49,7 +68,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      clickFlag: true,
+    })
   },
 
   /**

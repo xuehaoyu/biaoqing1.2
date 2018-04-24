@@ -101,6 +101,18 @@ page{
   float: left;
   margin-right: 18rpx;
   margin-bottom: 18rpx;
+  position: relative;
+}
+.collect-img{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+}
+.collect-img .sc-img{
+  width: 40rpx;
+  height: 40rpx;
 }
 .collect-item:nth-child(4n){
    margin-right: 0;

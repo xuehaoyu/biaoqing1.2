@@ -60,8 +60,12 @@ Page({
   },
   // 获取推荐
   getRec:function(){
+    wx.showLoading({
+      title: '加载中...',
+    })
     app.req.group(1,1).then(res=>{
       console.log(res);
+      wx.hideLoading();
       if(res.f === 1){
         this.setData({
           recList: res.d.Results,
@@ -157,7 +161,16 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
-   
-  }
+  // 跳转至套路
+  studyWay: function () {
+    if (this.data.clickFlag) {
+      let wayid = e.currentTarget.dataset.wayid;
+      this.setData({
+        clickFlag: false,
+      })
+      wx.navigateTo({
+        url: '../waydetail/waydetail?wayid=' + wayid,
+      })
+    }
+  },
 })

@@ -26,7 +26,7 @@ let url = {
   },
   yewu: {
     group: `${config.host}/emoji/group-list`,
-    way: `${config.host}/emoji/group-list`,
+    way: `${config.host}/emoji/trick-list`,
     wayDetail: `${config.host}/emoji/trick-detail`,
     search: `${config.host}/emoji/search-image`,
     sogosearch: `${config.host}/emoji/search`,
@@ -345,7 +345,7 @@ module.exports = {
     return requestPromisify({
       url: url.common.find,
       data: {
-        AppKey: 'wxf450a8bdd32d1331'  // 测试使用的是欢乐送祝福的appid获取数据，复制到小程序时请改为config.appid
+        AppKey: config.appid, // 测试使用的是欢乐送祝福的appid获取数据，复制到小程序时请改为config.appid
       }
     })
   },
@@ -395,7 +395,7 @@ module.exports = {
       data: {
         keyword: fonts,
         Page: page,
-        Pagesize: 12,
+        Pagesize: 20,
       }
     })
   },

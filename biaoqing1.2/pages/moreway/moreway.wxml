@@ -1,7 +1,8 @@
 <!--pages/moreway/moreway.wxml-->
 <view class='way-body'>
   <view class='way-list'>
-      <view class='way-item' wx:key="{{wayList}}" wx:key="{{item.TrickID}}">
+    <formid-custom bind:taphandle="studyWay" wx:for="{{wayList}}" wx:key="{{item.TrickID}}" data-wayid="{{item.TrickID}}">
+      <view class='way-item' >
         <view class='way-img'>
           <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
         </view>
@@ -10,5 +11,6 @@
           <view class='info-dec'>{{item.SubTitle}}</view>
         </view>
       </view>
+    </formid-custom>
   </view>
 </view>
