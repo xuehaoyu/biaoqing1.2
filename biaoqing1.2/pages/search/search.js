@@ -72,6 +72,7 @@ Page({
       other: [],
       otherpage: 1,
       otherHas: true,
+      otherFlag: false,
     })
     this.searchList();
   },

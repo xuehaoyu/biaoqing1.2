@@ -5,7 +5,8 @@ import {
   getUserInfoPromisify,
   setClipboardDataPromisify,
   getStoragePromisify,
-  getSettingPromisify
+  getSettingPromisify,
+  downloadFilePromisify
 } from 'Promisify.js'
 
 import {
@@ -346,6 +347,14 @@ module.exports = {
    * 获取用户 头像 昵称 等信息（wx.getUserInfo 的 promise 封装）
    */
   getUserInfo: getUserInfoPromisify,
+  /*
+  *下载文件
+  */
+  downloadFile: function (url){
+    return downloadFilePromisify({
+      url: url
+    })
+  },
   /**
    * 请求发现页数据
    * @param {* String} AppKey 小程序appid(config.js文件中的appid)
@@ -584,7 +593,7 @@ module.exports = {
     return this.login().then(res => {
       let Token = res.Token
       return requestPromisify({
-        url: url.yewu.detail,
+        url: url.yewu.stat,
         method: 'GET',
         data: {
           viewImageID: viewid,

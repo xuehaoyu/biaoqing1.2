@@ -172,73 +172,61 @@ Page({
   // 下载图
   downImgs:function(){
     let list = this.data.list;
-    wx.downloadFile({
-      url: list[0].Url, //仅为示例，并非真实的资源
-      success: (res) => {
-        console.log("图片1", res.tempFilePath)
+    app.req.downloadFile(list[0].Url).then(res => {
+      console.log("img1", res.tempFilePath);
+      if (res.statusCode === 200) {
+        this.setData({
+          img1: res.tempFilePath,
+        })
+      }
+    }).then(()=>{
+      app.req.downloadFile(list[1].Url).then(res=>{
+        console.log("img2", res.tempFilePath);
         if (res.statusCode === 200) {
           this.setData({
-            img1: res.tempFilePath,
-          })
-          wx.downloadFile({
-            url: list[1].Url,
-            success: (res) => {
-              console.log("图片2", res.tempFilePath)
-              if (res.statusCode === 200) {
-                this.setData({
-                  img2: res.tempFilePath,
-                })
-                wx.downloadFile({
-                  url: list[2].Url,
-                  success: (res) => {
-                    console.log("图片3", res.tempFilePath)
-                    if (res.statusCode === 200) {
-                      this.setData({
-                        img3: res.tempFilePath,
-                      })
-                      wx.downloadFile({
-                        url: list[3].Url,
-                        success: (res) => {
-                          console.log("图片4", res.tempFilePath)
-                          if (res.statusCode === 200) {
-                            this.setData({
-                              img4: res.tempFilePath,
-                            })
-                            wx.downloadFile({
-                              url: list[4].Url,
-                              success: (res) => {
-                                console.log("图片5", res.tempFilePath)
-                                if (res.statusCode === 200) {
-                                  this.setData({
-                                    img5: res.tempFilePath,
-                                  })
-                                  wx.downloadFile({
-                                    url: list[5].Url,
-                                    success: (res) => {
-                                      console.log("图片6", res.tempFilePath)
-                                      if (res.statusCode === 200) {
-                                        this.setData({
-                                          img6: res.tempFilePath,
-                                        })
-                                        this.startDraw();
-                                      }
-                                    }
-                                  })
-                                }
-                              }
-                            })
-                          }
-                        }
-                      })
-                    }
-                  }
-                })
-              }
-            }
+            img2: res.tempFilePath,
           })
         }
-      }
-    })  
+      }).then(()=>{
+        app.req.downloadFile(list[2].Url).then(res => {
+          console.log("img3", res.tempFilePath);
+          if (res.statusCode === 200) {
+            this.setData({
+              img3: res.tempFilePath,
+            })
+          }
+        }).then(()=>{
+          app.req.downloadFile(list[3].Url).then(res => {
+            console.log("img4", res.tempFilePath);
+            if (res.statusCode === 200) {
+              this.setData({
+                img4: res.tempFilePath,
+              })
+            }
+          }).then(()=>{
+            app.req.downloadFile(list[4].Url).then(res => {
+              console.log("img5", res.tempFilePath);
+              if (res.statusCode === 200) {
+                this.setData({
+                  img5: res.tempFilePath,
+                })
+              }
+            }).then(()=>{
+              app.req.downloadFile(list[5].Url).then(res => {
+                console.log("img6", res.tempFilePath);
+                if (res.statusCode === 200) {
+                  this.setData({
+                    img6: res.tempFilePath,
+                  })
+                }
+              }).then(()=>{
+                this.startDraw();
+              })
+            })
+          })
+        })
+      })
+    })
   },
   // 开始绘图
   startDraw: function () {
@@ -258,9 +246,9 @@ Page({
     ctx.drawImage(img1, 20, 62, 200, 200)
     ctx.drawImage(img2, 240, 62, 200, 200)
     ctx.drawImage(img3, 460, 62, 200, 200)
-    ctx.drawImage(img4, 20, 62, 200, 200)
+    ctx.drawImage(img4, 20, 282, 200, 200)
     ctx.drawImage(img5, 240, 282, 200, 200)
-    ctx.drawImage(img6, 460, 482, 200, 200)
+    ctx.drawImage(img6, 460, 282, 200, 200)
 
     ctx.restore()
     ctx.draw();

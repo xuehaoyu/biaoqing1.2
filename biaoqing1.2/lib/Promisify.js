@@ -47,5 +47,6 @@ module.exports = {
   getUserInfoPromisify: Promisify(wx.getUserInfo),
   setClipboardDataPromisify: Promisify(wx.setClipboardData),
   getStoragePromisify: getStoragePromisify,
-  getSettingPromisify: Promisify(wx.getSetting)
+  getSettingPromisify: Promisify(wx.getSetting),
+  downloadFilePromisify: Promisify(wx.downloadFile),
 }
