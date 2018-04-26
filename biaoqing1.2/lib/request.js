@@ -398,7 +398,7 @@ module.exports = {
         data: {
           keyword:fonts,
           Page: page,
-          Pagesize:12,
+          Pagesize:20,
         },
         header: {
           cookie: `AppKey=${config.appid};Token=${Token}`
