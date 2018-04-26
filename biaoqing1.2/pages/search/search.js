@@ -79,6 +79,9 @@ Page({
   searchList: function () {
     if (!this.data.hasMore) return;
     let fonts = this.data.fonts;
+    app.req.submitAdvid(fonts).then(res => {
+      console.log("统计搜索词", res);
+    })
     app.req.search(fonts, this.data.page).then(res => {
       console.log(res);
       if (res.f === 1) {

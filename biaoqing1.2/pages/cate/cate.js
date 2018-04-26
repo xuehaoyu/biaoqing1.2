@@ -1,4 +1,4 @@
-// pages/cate/cate.js
+ // pages/cate/cate.js
 //获取应用实例
 const app = getApp()
 Page({
@@ -10,13 +10,13 @@ Page({
     // 分类类型
     cateType:1,
     cateFlag:true,
-    cateList:['金馆长','TFBOYS','张家辉','古天乐'],
-    cateSate:[true,false,false,false],
+    cateList:[],
+    cateSate:[],
 
     tagId:"",
     group:[],
     page:1,
-    hsaMore:true,
+    hasMore:true,
 
     clickFlag:true,
   },
@@ -72,6 +72,9 @@ Page({
       this.setData({
         cateFlag: true,
         cateType:1,
+        group: [],
+        page: 1,
+        hasMore: true,
       })
       this.getTags();
     }
@@ -82,15 +85,20 @@ Page({
       this.setData({
         cateFlag: false,
         cateType: 2,
+        group: [],
+        page: 1,
+        hasMore: true,
       })
       this.getTags();
     }
   },
   // 选择分类
   selectCate: function (e) {
+    // console.log(e);
     let num = e.currentTarget.dataset.index;
     let tagid = e.currentTarget.dataset.tagid;
     let cateSate = this.data.cateSate;
+    if (tagid == this.data.tagId) return;
     cateSate = cateSate.map((item,index)=>{
       if (index == num){
         item = true;
@@ -104,11 +112,12 @@ Page({
       tagId: tagid,
       group:[],
       page:1,
+      hasMore:true,
     })
     this.getTagsGroup();
   },
   // 跳转至详情
-  goDetail: function () {
+  goDetail: function (e) {
     let state = 1;
     let groupid = e.currentTarget.dataset.groupid;
     if (this.data.clickFlag) {

@@ -19,7 +19,7 @@
         <view class='btn-font'>推荐给好友</view>
         <button open-type='share' data-state="2" data-imgid="{{topImg.ImageID}}"></button>
       </view>
-      <formid-custom bind:taphandle="saveImg" data-imgurl="{{topImg.Url}}">
+      <formid-custom bind:taphandle="saveTopimg" data-imgurl="{{topImg.Url}}" data-imgid="{{topImg.ImageID}}">
         <view class='save-btn'>
           <image src='../../imgs/save.png'></image>
           <view class='btn-font'>保存</view>
@@ -51,12 +51,9 @@
             <view class='top-font'>{{title}}</view>
         </view>
         <view class='tag-list'>
-            <formid-custom bind:taphandle="goDetail">
-                <text>#标签标签标</text>
-            </formid-custom>
-            <formid-custom wx:for="{{tagList}}" wx:key="{{item.TagID}}" bind:taphandle="goDetail" data-tagid="{{item.TagID}}">
-              <text>#{{item.TagName}}</text>
-            </formid-custom>
+          <formid-custom wx:for="{{tagList}}" wx:key="{{item.TagID}}" bind:taphandle="goDetail" data-tagid="{{item.TagID}}">
+            <text>#{{item.TagName}}</text>
+          </formid-custom>
         </view>
         <view class='group-list'>
             <view class='group-item' wx:for="{{list}}"  wx:key="{{item.ImageID}}" >

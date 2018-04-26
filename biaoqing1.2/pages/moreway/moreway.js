@@ -11,6 +11,8 @@ Page({
     hasMore: true,
     page: 1,
     pagesize:8,
+
+    clickFlag:true,
   },
 
   /**
@@ -44,7 +46,7 @@ Page({
     })
   },
   // 跳转至套路
-  studyWay: function () {
+  studyWay: function (e) {
     if (this.data.clickFlag) {
       let wayid = e.currentTarget.dataset.wayid;
       this.setData({
@@ -66,7 +68,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      clickFlag: true,
+    })
   },
 
   /**

@@ -7,7 +7,7 @@
         <view class='kefu-btn'>
            <text>联系客服</text>
            <image src='../../imgs/kefu.png'></image>
-           <button open-type='concat'></button>
+           <button open-type='contact'></button>
         </view>
         <view class='share-btn'>
           <text>分享</text>
@@ -23,8 +23,8 @@
            <image src='{{item.Url}}' mode='aspectFill'></image>
         </formid-custom>
         <view class='collect-img'>
-          <formid-custom bind:taphandle="collectImg" data-imgid="{{item.ImageID}}" data-groupid="{{item.GroupID}}" data-tagid="{{item.TagID}}">
-             <image class='sc-img' src="{{collectFlag?'../../imgs/shoucang.png':'../../imgs/shoucang-no.png'}}"></image>
+          <formid-custom bind:taphandle="collectImg" data-imgid="{{item.ImageID}}" data-groupid="{{item.GroupID}}" data-tagid="{{item.TagID}}" data-index="{{index}}">
+             <image class='sc-img' src="{{state[index]?'../../imgs/shoucang.png':'../../imgs/shoucang-no.png'}}"></image>
           </formid-custom>
         </view>
      </view>

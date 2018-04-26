@@ -1,0 +1,128 @@
+/* pages/admire/admire.wxss */
+
+.tips {
+    height: 70rpx;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-content: center;
+    align-items: center;
+    padding: 0 30rpx;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    color: #fff;
+    font-size: 28rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tips image {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 100%;
+    margin-right: 15rpx;
+}
+
+.user {
+    height: 470rpx;
+    background: url(http://img.haimi.com/FmOG7ehtfgYsqsl_0IAvN0wScmBP) center top no-repeat;
+    background-size: 750rpx;
+    padding-top: 135rpx;
+}
+
+.user image {
+    border: 1rpx solid #eee;
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.user .nick-name {
+    text-align: center;
+    font-size: 30rpx;
+    color: #666;
+    line-height: 90rpx;
+}
+
+.user .text {
+    font-size: 36rpx;
+    color: #242424;
+    text-align: center;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 45rpx;
+}
+
+.list view {
+    width: 200rpx;
+    height: 100rpx;
+    position: relative;
+    border: 2rpx solid #d9d8dd;
+    text-align: center;
+    line-height: 100rpx;
+    font-size: 40rpx;
+    border-radius: 10rpx;
+    margin-bottom: 35rpx;
+    color: #ff3847;
+}
+
+.list view.active {
+    border: 2rpx solid #ff3847;
+}
+
+.list view image {
+    display: none;
+}
+
+.list view.active image {
+    display: block;
+    width: 52rpx;
+    height: 42rpx;
+    position: absolute;
+    right: -1rpx;
+    top: -1rpx;
+}
+
+.other {
+    font-size: 30rpx;
+    color: #2960b3;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.nums {
+    text-align: center;
+    font-size: 30rpx;
+    color: #666;
+    line-height: 100rpx;
+}
+
+.nums view {
+    font-size: 30rpx;
+    color: #2960b3;
+    display: inline;
+}
+
+.list-user {
+    display: flex;
+    padding: 0 30rpx;
+    flex-wrap: wrap;
+    padding-bottom: 50rpx;
+    padding-right: 20rpx;
+}
+
+.list-user image {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 10rpx;
+    border: 1rpx solid #f7f7f7;
+    margin-bottom: 10rpx;
+    margin-right: 10rpx;
+}

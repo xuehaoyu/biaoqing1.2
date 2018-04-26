@@ -90,3 +90,6 @@
   font-size: 28rpx;
   color: #999999;
 }
+.tag-area text{
+  margin-right: 14rpx;
+}

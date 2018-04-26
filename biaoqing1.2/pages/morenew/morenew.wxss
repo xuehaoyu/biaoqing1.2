@@ -55,3 +55,6 @@ page{
   font-size: 28rpx;
   color: #999999;
 }
+.info-dec text{
+  margin-right: 14rpx;
+}

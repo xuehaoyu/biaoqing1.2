@@ -23,6 +23,7 @@ let url = {
     infofind: `${config.commonHost}/find/infofind`,
     updateUser: `${config.commonHost}/xcx/update-user`,
     check: `${config.commonHost}/filter/check`,
+    userlist:`${config.commonHost}/xcx/pay-record`,
   },
   yewu: {
     group: `${config.host}/emoji/group-list`,
@@ -38,6 +39,11 @@ let url = {
     add: `${config.host}/user/add-favorite`,
     collect: `${config.host}/user/favorite-list`,
     report: `${config.host}/user/complaint`,
+    stat: `${config.host}/image/stat`,
+  },
+  pay:{
+    payconfig: `${config.payHost}/payment/amountConfig`,
+    lastrecord: `${config.payHost}/payment/lastRecord`,
   }
 }
 
@@ -186,14 +192,16 @@ module.exports = {
    * 上传 Advid
    * @param {* String} advid advid
    */
-  submitAdvid: function (advID) {
+  submitAdvid: function (page) {
     return this.getUserClient().then(res => {
       let Token = res.Token
       return requestPromisify({
         url: url.common.submitAdvid,
         method: 'POST',
         data: {
-          advID: advID
+          page:page,
+          action:1,
+          actionName:"搜索词",
         },
         header: {
           cookie: `AppKey=${config.appid};Token=${Token}`
@@ -224,6 +232,7 @@ module.exports = {
         }
       })
     }).then(res => {
+      // console.log(res);
       let prepay_id = res.package.split('prepay_id=')
       if (prepay_id.length >= 2) {
         prepay_id = prepay_id[1]
@@ -468,7 +477,7 @@ module.exports = {
     return this.login().then(res => {
       let Token = res.Token
       return requestPromisify({
-        url: url.yewu.tags,
+        url: url.yewu.tagGroup,
         method: 'GET',
         data: {
           tagID: tagId,
@@ -564,6 +573,51 @@ module.exports = {
           tagID: tagid,
           imageID: imgid,
         },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 统计埋点
+  stat: function (viewid,shareid,downid) {
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.yewu.detail,
+        method: 'GET',
+        data: {
+          viewImageID: viewid,
+          shareImageID: shareid,
+          downImageID: downid,
+        },
+        header: {
+          cookie: `AppKey=${config.appid};Token=${Token}`
+        }
+      })
+    })
+  },
+  // 支付相关
+  payconfig: function () {
+    return requestPromisify({
+      url: url.pay.payconfig,
+      method: 'GET',
+    })
+  },
+  lastrecord:function () {
+    return requestPromisify({
+      url: url.pay.lastrecord,
+      method: 'GET',
+    })
+  },
+  // 打赏列表
+  userlist: function () {
+    console.log(url.common.userlist)
+    return this.login().then(res => {
+      let Token = res.Token
+      return requestPromisify({
+        url: url.common.userlist,
+        method: 'GET',
         header: {
           cookie: `AppKey=${config.appid};Token=${Token}`
         }

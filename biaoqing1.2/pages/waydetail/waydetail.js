@@ -11,7 +11,7 @@ Page({
     // wayurl:"https://xcx-album-img.zmwxxcx.com/5f58100523b79ed41a7f93c4966a1f3e-thumbnail",
     wayid:"",
     groupid:"",
-    // wayurl:"",
+    title:'',
     imgs:[],
     // 屏幕信息
     windowW:0,
@@ -30,23 +30,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let wayid = options.wayid;
-    // this.setData({
-    //   wayid: wayid,
-    // })
-    // this.getWayDetail();
+    let wayid = options.wayid;
+    this.setData({
+      wayid: wayid,
+    })
+    this.getWayDetail();
+    // 如果是分享进去 显示 返回按钮
     if (options.share){
       this.setData({
         backFlag: false,
       })
     }
+    // 获取屏幕宽高
     let windowW= wx.getSystemInfoSync().windowWidth;// 屏幕宽度
     let windowH = wx.getSystemInfoSync().windowHeight;// 屏幕高度
     this.setData({
       windowW: windowW,
       windowH: windowH,
     })
-    this.getImgInfo();
+    // this.getImgInfo();
   },
   getWayDetail:function(){
     app.req.wayDetail(this.data.wayid).then(res=>{
@@ -54,7 +56,8 @@ Page({
       if(res.f === 1){
         this.setData({
           wayurl: res.d.ImageUrl,
-          imgs: res.d.GroupImages,
+          title: res.d.Title,
+          imgs: res.d.ImageList,
           groupid: res.d.GroupID,
         })
         this.getImgInfo();
@@ -70,9 +73,9 @@ Page({
       src: wayurl,
       success: (res)=>{
         let imgH = windowW * (res.height / res.width);
-        console.log(imgH)
-        console.log(res.width)
-        console.log(res.height)
+        // console.log(imgH)
+        // console.log(res.width)
+        // console.log(res.height)
         if (imgH > windowH +60){
           this.setData({
             btnFlag: true,
@@ -111,7 +114,7 @@ Page({
     })
   },
   // 去详情页
-  goDetail:function(){
+  goDetail:function(e){
     let state = 2;
     let imgid = e.currentTarget.dataset.imgid;
     let groupid = this.data.groupid;
@@ -185,12 +188,13 @@ Page({
   onShareAppMessage: function (res) {
     let wayurl = this.data.wayurl;
     let wayid = this.data.wayid;
+    let title = this.data.title;
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
     }
     return {
-      title: '快学一下这个套路吧',
+      title: title,
       imageUrl:wayurl,
       path: '/pages/waydetail/waydetail?wayid=' + wayid+'&share=share',
       success: function (res) {

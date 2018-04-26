@@ -1,0 +1,40 @@
+<!--pages/admire/admire.wxml-->
+<wxs module="time">
+    var timeStr = function(item) {
+        var str = '';
+        var now = getDate();
+        var nowTime = (now.getTime() / 1000).toFixed(0);
+        var dif = nowTime - item;
+        if (dif < 60) {
+            str = '刚刚'
+        } else if (dif >= 60 && dif < 60 * 60) {
+            str = (dif / 60).toFixed(0) + '分钟前'
+        } else if (dif >= 60 * 60 && dif < 24 * 60 * 60) {
+            str = (dif / 3600).toFixed(0) + '小时前'
+        } else if (dif >= 24 * 60 * 60 && dif < 30 * 24 * 60 * 60) {
+            str = (dif / 60 / 60 / 24).toFixed(0) + '天前'
+        }
+        return str;
+    }
+    module.exports.timeStr = timeStr;
+</wxs>
+<view class="tips" wx:if="{{data}}">
+    <image src="{{data.UserInfo.AvatarUrl}}"></image>
+    {{data.UserInfo.NickName}} {{time.timeStr(data.Timestamp)}} 赞赏了 小五
+</view>
+<view class="user">
+    <image src="../../imgs/1.jpg"></image>
+    <view class="nick-name">小五</view>
+    <view class="text">免费维护不易，请多多支持！</view>
+</view>
+<view class="list">
+    <view wx:for="{{list}}" wx:key="idx" bindtap="_selectAmount" class="{{amount == item ? 'active' : ''}}" data-value="{{item}}">{{item}}元
+        <image src="../../imgs/selected.png"></image>
+    </view>
+</view>
+
+<view class="nums">
+    <view>{{total}}</view>已赞赏</view>
+<view class="list-user">
+    <image wx:for="{{userList}}" wx:key="idx" src="{{item.AvatarUrl}}"></image>
+</view>

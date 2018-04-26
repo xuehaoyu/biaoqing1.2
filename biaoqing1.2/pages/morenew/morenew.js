@@ -45,7 +45,7 @@ Page({
     })
   },
   // 跳转至详情
-  goDetail: function () {
+  goDetail: function (e) {
     let state = 1;
     let groupid = e.currentTarget.dataset.groupid;
     if (this.data.clickFlag) {

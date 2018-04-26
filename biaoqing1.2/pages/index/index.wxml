@@ -39,11 +39,11 @@
       </formid-custom>
     </view>
     <view class='rec-list'>
-      <formid-custom  wx:for="{{recList}}" wx:key="{{item.GroupID}}" bind:taphandle="goDetail" data-groupid="{{item.GroupID}}">
-        <view class='rec-item'>
-            <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
-        </view>
-      </formid-custom>
+      <view class='rec-item' wx:for="{{recList}}" wx:key="{{item.GroupID}}">
+        <formid-custom   bind:taphandle="goDetail" data-groupid="{{item.GroupID}}">
+          <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
+        </formid-custom>
+      </view>
     </view>
   </view>
    <!--最新表情-->
@@ -61,11 +61,11 @@
       </formid-custom>
     </view>
     <view class='new-list'>
-      <formid-custom  wx:for="{{recList}}" wx:key="{{item.GroupID}}"  bind:taphandle="goDetail" data-groupid="{{item.GroupID}}">
-        <view class='new-item'>
-            <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
-        </view>
-      </formid-custom>
+      <view class='new-item' wx:for="{{recList}}" wx:key="{{item.GroupID}}" >
+        <formid-custom   bind:taphandle="goDetail" data-groupid="{{item.GroupID}}">
+          <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
+        </formid-custom>
+      </view>
     </view>
   </view>
   <!--学套路  -->

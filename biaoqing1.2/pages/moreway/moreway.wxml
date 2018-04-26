@@ -7,7 +7,7 @@
           <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
         </view>
         <view class='way-info'>
-          <view class='info-title'>{{item.ImageUrl}}</view>
+          <view class='info-title'>{{item.Title}}</view>
           <view class='info-dec'>{{item.SubTitle}}</view>
         </view>
       </view>

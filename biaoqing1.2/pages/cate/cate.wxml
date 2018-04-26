@@ -18,7 +18,9 @@
             <view class='item-img'><image src='{{item.ImageUrl}}' mode='aspectFill'></image></view>
             <view class='con-info'>
                 <view class='info-title'>{{item.GroupName}}</view>
-                <view class='tag-area'>{{item.Tags}}</view>
+                <view class='tag-area'>
+                  <text wx:for="{{item.TagList}}" wx:key="{{item.TagID}}">#{{item.TagName}}</text>
+                </view>
             </view>
         </view>
       </formid-custom>

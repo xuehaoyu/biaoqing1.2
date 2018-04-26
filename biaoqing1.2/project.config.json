@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.98",
-	"appid": "wx340146d907668175",
+	"appid": "wxe063c719f2c40efb",
 	"projectname": "biaoqing1.2",
 	"isGameTourist": false,
 	"condition": {
@@ -99,6 +99,12 @@
 					"id": -1,
 					"name": "collcet",
 					"pathName": "pages/collect/collect",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "admire",
+					"pathName": "pages/admire/admire",
 					"query": ""
 				}
 			]

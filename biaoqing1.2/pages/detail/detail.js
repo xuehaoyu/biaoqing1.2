@@ -24,6 +24,7 @@ Page({
     clickFlag:true,
     // 教程页面
     teachImg:"",
+    teachId:"",
     teachFlag: false,
     // 分享图
     img1: "",
@@ -144,6 +145,7 @@ Page({
           }) 
           topImg =  filter[0];
         }
+        imgid = topImg.ImageID;
         let collectFlag;
         if (topImg.IsFavorite == "1"){
           collectFlag = true;
@@ -151,11 +153,16 @@ Page({
           collectFlag = false;
         }
         this.setData({
+          imgid: imgid,
           title: title,
           tagList: tagList,
           list: list,
           topImg: topImg,
           collectFlag: collectFlag,
+        })
+        // 统计数据
+        app.req.stat(imgid, "", "").then(res => {
+          console.log(res);
         })
         // 下载六张图 合成 转发图
         this.downImgs();
@@ -167,71 +174,71 @@ Page({
     let list = this.data.list;
     wx.downloadFile({
       url: list[0].Url, //仅为示例，并非真实的资源
-      success:(res)=>{
-        console.log("图片1",res.tempFilePath)
+      success: (res) => {
+        console.log("图片1", res.tempFilePath)
         if (res.statusCode === 200) {
           this.setData({
             img1: res.tempFilePath,
           })
-        }
-      }
-    })
-    wx.downloadFile({
-      url: list[1].Url, //仅为示例，并非真实的资源
-      success: (res) => {
-        console.log("图片2", res.tempFilePath)
-        if (res.statusCode === 200) {
-          this.setData({
-            img2: res.tempFilePath,
+          wx.downloadFile({
+            url: list[1].Url,
+            success: (res) => {
+              console.log("图片2", res.tempFilePath)
+              if (res.statusCode === 200) {
+                this.setData({
+                  img2: res.tempFilePath,
+                })
+                wx.downloadFile({
+                  url: list[2].Url,
+                  success: (res) => {
+                    console.log("图片3", res.tempFilePath)
+                    if (res.statusCode === 200) {
+                      this.setData({
+                        img3: res.tempFilePath,
+                      })
+                      wx.downloadFile({
+                        url: list[3].Url,
+                        success: (res) => {
+                          console.log("图片4", res.tempFilePath)
+                          if (res.statusCode === 200) {
+                            this.setData({
+                              img4: res.tempFilePath,
+                            })
+                            wx.downloadFile({
+                              url: list[4].Url,
+                              success: (res) => {
+                                console.log("图片5", res.tempFilePath)
+                                if (res.statusCode === 200) {
+                                  this.setData({
+                                    img5: res.tempFilePath,
+                                  })
+                                  wx.downloadFile({
+                                    url: list[5].Url,
+                                    success: (res) => {
+                                      console.log("图片6", res.tempFilePath)
+                                      if (res.statusCode === 200) {
+                                        this.setData({
+                                          img6: res.tempFilePath,
+                                        })
+                                        this.startDraw();
+                                      }
+                                    }
+                                  })
+                                }
+                              }
+                            })
+                          }
+                        }
+                      })
+                    }
+                  }
+                })
+              }
+            }
           })
         }
       }
-    })
-    wx.downloadFile({
-      url: list[2].Url, //仅为示例，并非真实的资源
-      success: (res) => {
-        console.log("图片3", res.tempFilePath)
-        if (res.statusCode === 200) {
-          this.setData({
-            img3: res.tempFilePath,
-          })
-        }
-      }
-    })
-    wx.downloadFile({
-      url: list[3].Url, //仅为示例，并非真实的资源
-      success: (res) => {
-        console.log("图片4", res.tempFilePath)
-        if (res.statusCode === 200) {
-          this.setData({
-            img4: res.tempFilePath,
-          })
-        }
-      }
-    })
-    wx.downloadFile({
-      url: list[4].Url, //仅为示例，并非真实的资源
-      success: (res) => {
-        console.log("图片5", res.tempFilePath)
-        if (res.statusCode === 200) {
-          this.setData({
-            img5: res.tempFilePath,
-          })
-        }
-      }
-    })
-    wx.downloadFile({
-      url: list[5].Url, //仅为示例，并非真实的资源
-      success: (res) => {
-        console.log("图片6", res.tempFilePath)
-        if (res.statusCode === 200) {
-          this.setData({
-            img6: res.tempFilePath,
-          })
-        }
-      }
-    })
-    this.startDraw();
+    })  
   },
   // 开始绘图
   startDraw: function () {
@@ -278,7 +285,8 @@ Page({
         })
       },
       fail: res => {
-       
+        //  获取路径失败
+        console.log("获取路径成功")
       },
     })
   },
@@ -305,10 +313,21 @@ Page({
         collectFlag: !this.data.collectFlag,
       })
     })
+
+    app.req.detail(groupid, tagid, "").then(res => {
+      console.log(res);
+      if (res.f === 1) {
+        let list = res.d.ImageList;
+        this.setData({
+          list: list,
+        })
+      }
+    })
   },
   // 选择顶部图
   selectTop: function (e) {
     let topImg = e.currentTarget.dataset.topimg;
+    let imgid = topImg.ImageID;
     let collectFlag;
     if (topImg.IsFavorite == "1") {
       collectFlag = true;
@@ -318,6 +337,9 @@ Page({
     this.setData({
       topImg: topImg,
       collectFlag: collectFlag,
+    })
+    app.req.stat(imgid,"","").then(res => {
+      console.log(res);
     })
   },
   // 预览图片
@@ -343,9 +365,38 @@ Page({
       }
     })
   },
+  // 保存图片
+  saveTopimg:function(e) {
+    let imgurl = e.currentTarget.dataset.imgurl;
+    let imgid = e.currentTarget.dataset.imgid;
+    wx.getStorage({
+      key: 'teach',
+      success: res => {
+        wx.previewImage({
+          current: imgurl, // 当前显示图片的http链接  
+          urls: [imgurl] // 需要预览的图片http链接列表  
+        })
+        app.req.stat("", "", imgid).then(res => {
+          console.log(res);
+        })
+      },
+      fail: res => {
+        this.setData({
+          teachImg: imgurl,
+          teachId: imgid,
+          teachFlag: true,
+        })
+        wx.setStorage({
+          key: "teach",
+          data: "teach"
+        })
+      }
+    })
+  },
   // 已经知道
   hasKnow: function () {
     let teachImg = this.data.teachImg;
+    let teachId = this.data.teachId;
     this.setData({
       teachFlag: false,
     })
@@ -353,6 +404,11 @@ Page({
       current: teachImg, // 当前显示图片的http链接  
       urls: [teachImg] // 需要预览的图片http链接列表  
     })
+    if (teachId != ""){
+      app.req.stat("", "", teachId).then(res => {
+        console.log(res);
+      })
+    }
   },
   //打赏
   giveMoney:function(){
@@ -361,7 +417,7 @@ Page({
         clickFlag: false,
       })
       wx.navigateTo({
-        url: '../pay/pay',
+        url: '../admire/admire',
       })
     }
   },
@@ -429,19 +485,20 @@ Page({
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
+      console.log("群组分享图", this.data.shareImg)
       var state = res.target.dataset.state;
       var groupid = this.data.groupid;
       var title = "";
       var imgurl = "";
       var path = "";
       if(state == "1"){
-        title = this.data.title;
+        title = "给你推荐"+this.data.title+"表情包";
         imgurl = this.data.shareImg;
         path = "/pages/detail/detail?state=" + state +"&groupid=" + groupid;
       } else if (state == "2"){
         title = this.data.usernick + "发送给你一个表情快来查收";
         imgurl = this.data.topImg.Url;
-        let imgid = res.target.dataset.imgid;
+        var imgid = res.target.dataset.imgid;
         path = "/pages/detail/detail?state=" + state + "&imgid=" + imgid + "&groupid=" + groupid;
       }
     }
@@ -451,6 +508,11 @@ Page({
       imageUrl: imgurl,
       success: function (res) {
         // 转发成功
+        if(state == "2"){
+          app.req.stat("",imgid,"").then(res=>{
+            console.log(res);
+          })
+        }
       },
       fail: function (res) {
         // 转发失败

@@ -26,7 +26,7 @@ Page({
   },
   // 输入搜索词
   writeFonts:function(e){
-    console.log(e);
+    // console.log(e);
     let fonts = e.detail.value;
     app.req.check(fonts).then(res=>{
       console.log(res);
@@ -52,6 +52,9 @@ Page({
     if (this.data.clickFlag){
       this.setData({
         clickFlag:false,
+      })
+      app.req.submitAdvid(fonts).then(res=>{
+        console.log("统计搜索词",res);
       })
       wx.navigateTo({
         url: '../search/search?fonts=' + fonts,
@@ -149,7 +152,7 @@ Page({
     }
   },
   // 跳转至详情
-  goDetail:function(){
+  goDetail:function(e){
     let state = 1;
     let groupid = e.currentTarget.dataset.groupid;
     if (this.data.clickFlag) {
@@ -162,7 +165,7 @@ Page({
     }
   },
   // 跳转至套路
-  studyWay: function () {
+  studyWay: function (e) {
     if (this.data.clickFlag) {
       let wayid = e.currentTarget.dataset.wayid;
       this.setData({

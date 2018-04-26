@@ -11,10 +11,9 @@ Page({
     usernick:"",
     // 收藏列表
     list:[],
+    state:[],
     page:1,
     hasMore:true,
-    // 收藏开关
-    collectFlag:true,
   },
 
   /**
@@ -37,13 +36,18 @@ Page({
       if(res.f === 1){
         let hasMore = this.data.hasMore;
         let list = this.data.list;
+        let state = this.data.state;
         if (res.d.Page * res.d.Pagesize > res.d.TotalCount) {
           hasMore = false;
         }
+        res.d.Results.forEach(()=>{
+          state.push(true);
+        })
         list = list.concat(res.d.Results);
         this.setData({
           hasMore: hasMore,
           list: list,
+          state: state,
           page: this.data.page + 1,
         })
       }
@@ -118,12 +122,23 @@ Page({
     let groupid = e.currentTarget.dataset.groupid;
     let tagid = e.currentTarget.dataset.tagid;
     let imgid = e.currentTarget.dataset.imgid;
+    let num = e.currentTarget.dataset.index;
+    console.log(num)
+    let state = this.data.state;
+    state = state.map((item,index)=>{
+      if(index == num){
+        item = !item;
+      }
+      return item;
+    })
     app.req.add(imgid, groupid, tagid).then(res => {
       console.log(res);
       this.setData({
         collectFlag: !this.data.collectFlag,
+        state: state,
       })
     })
+
   },
   // 预览图片
   previewImg: function (e) {

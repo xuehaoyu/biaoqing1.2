@@ -9,7 +9,7 @@
         <view class='new-info'>
           <view class='info-title'>{{item.GroupName}}</view>
           <view class='info-dec'>
-            <text wx:for="{{item.Tags}}">#{{item}}</text>
+            <text wx:for="{{item.TagList}}" wx:key="{{item.TagID}}">#{{item.TagName}}</text>
           </view>
         </view>
       </view>

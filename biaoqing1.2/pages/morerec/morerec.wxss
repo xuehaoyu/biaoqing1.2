@@ -54,4 +54,7 @@ page{
   overflow: auto;
   font-size: 28rpx;
   color: #999999;
-}/* pages/morerec/morerec.wxss */
+}
+.info-dec text{
+  margin-right: 14rpx;
+}

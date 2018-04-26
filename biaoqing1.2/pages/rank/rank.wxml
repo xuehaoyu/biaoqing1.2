@@ -7,7 +7,8 @@
    </view>
    <!--排行榜列表  -->
    <view class='rank-list'>
-      <view class='rank-item' wx:for="{{rank}}" wx:key="{{item.GroupID}}">
+    <formid-custom bind:taphandle="goDetail" wx:for="{{rank}}" wx:key="{{item.GroupID}}" data-groupid="{{item.GroupID}}">
+      <view class='rank-item'>
           <view class='rank-img'>
              <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
           </view>
@@ -22,5 +23,6 @@
             <view class='info-dec'>{{item.GroupName}}</view>
           </view>
       </view>
+    </formid-custom>  
    </view>
 </view>
