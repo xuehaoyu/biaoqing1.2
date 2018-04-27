@@ -33,7 +33,7 @@ Page({
       if (res.f === 1) {
         let hasMore = this.data.hasMore;
         let wayList = this.data.wayList;
-        if (res.d.Page * res.d.Pagesize > res.d.TotalCount) {
+        if (res.d.Page * res.d.Pagesize >= res.d.TotalCount) {
           hasMore = false;
         }
         wayList = wayList.concat(res.d.Results);

@@ -26,6 +26,8 @@ Page({
     teachImg:"",
     teachId:"",
     teachFlag: false,
+    // 滚动到顶部
+    toView:'',
     // 分享图
     img1: "",
     img2: "",
@@ -34,13 +36,21 @@ Page({
     img5: "",
     img6:"",
     shareImg:'',
+    // 返回按钮
+    backFlag:true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.share)
     let state = options.state;
+    if (options.share == 1){
+      this.setData({
+        backFlag:false,
+      })
+    }
     if(state == 1){
       this.setData({
         groupid:options.groupid,
@@ -142,6 +152,7 @@ Page({
         if (state == 2){
           let filter =  list.filter((item)=>{
             item.ImageID == imgid;
+            return item;
           }) 
           topImg =  filter[0];
         }
@@ -325,6 +336,7 @@ Page({
     this.setData({
       topImg: topImg,
       collectFlag: collectFlag,
+      toView:'topPosition',
     })
     app.req.stat(imgid,"","").then(res => {
       console.log(res);
@@ -422,6 +434,17 @@ Page({
       })
     }
   },
+  // 返回首页
+  backIndex:function(){
+    if (this.data.clickFlag){
+      this.setData({
+        clickFlag: false,
+      })
+      wx.reLaunch({
+        url: '../index/index',
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -482,12 +505,12 @@ Page({
       if(state == "1"){
         title = "给你推荐"+this.data.title+"表情包";
         imgurl = this.data.shareImg;
-        path = "/pages/detail/detail?state=" + state +"&groupid=" + groupid;
+        path = "/pages/detail/detail?state=" + state + "&groupid=" + groupid + "&share=1";
       } else if (state == "2"){
         title = this.data.usernick + "发送给你一个表情快来查收";
         imgurl = this.data.topImg.Url;
         var imgid = res.target.dataset.imgid;
-        path = "/pages/detail/detail?state=" + state + "&imgid=" + imgid + "&groupid=" + groupid;
+        path = "/pages/detail/detail?state=" + state + "&imgid=" + imgid + "&groupid=" + groupid+"&share=1";
       }
     }
     return {

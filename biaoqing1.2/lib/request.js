@@ -40,7 +40,7 @@ let url = {
     add: `${config.host}/user/add-favorite`,
     collect: `${config.host}/user/favorite-list`,
     report: `${config.host}/user/complaint`,
-    stat: `${config.host}/image/stat`,
+    stat: `${config.host}/emoji/stat`,
   },
   pay:{
     payconfig: `${config.payHost}/payment/amountConfig`,

@@ -1,5 +1,6 @@
 <!--pages/detail/detail.wxml-->
-<view class='detail-body'>
+<scroll-view class='detail-body' scroll-y scroll-into-view="{{toView}}">
+    <view id="topPosition"></view>
     <view class='detail-top'>
       <formid-custom bind:taphandle="previewImg" data-imgurl="{{topImg.Url}}">
         <view class='top-img'>
@@ -63,7 +64,7 @@
             </view>
         </view>
     </view>
-</view>
+</scroll-view>
 <view class='bottom-share'>
   <view class='share-font'>分享此套表情包</view>
   <view class='share-img'>
@@ -81,6 +82,12 @@
         <view class='teach-font'>长按发送表情给好友</view>
         <view class='know-btn' bindtap='hasKnow'>知道了</view>
     </view>
+</view>
+<!--返回按钮  -->
+<view class='back-fix' hidden='{{backFlag}}'>
+    <formid-custom bind:taphandle="backIndex" >
+      <image src='../../imgs/home.png'></image>
+    </formid-custom>
 </view>
 <!--合成分享图 画布  -->
 <canvas  canvas-id="myCanvas" style='width:680px;height:544px;background:#fff;position:fixed;left:-680px;top:-544rpx;'></canvas>
