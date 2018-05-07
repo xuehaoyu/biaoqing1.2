@@ -20,7 +20,9 @@
                 <text>{{item.CollectCount}}</text>
               </view>
             </view>
-            <view class='info-dec'>{{item.GroupName}}</view>
+            <view class='info-dec'>
+              <text wx:for="{{item.TagList}}" wx:key="{{index}}">#{{item.TagName}}</text>
+            </view>
           </view>
       </view>
     </formid-custom>  

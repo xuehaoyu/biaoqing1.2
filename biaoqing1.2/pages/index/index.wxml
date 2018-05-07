@@ -61,7 +61,7 @@
       </formid-custom>
     </view>
     <view class='new-list'>
-      <view class='new-item' wx:for="{{recList}}" wx:key="{{item.GroupID}}" >
+      <view class='new-item' wx:for="{{newList}}" wx:key="{{item.GroupID}}" >
         <formid-custom   bind:taphandle="goDetail" data-groupid="{{item.GroupID}}">
           <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
         </formid-custom>
@@ -86,7 +86,7 @@
         <view class='study-item' wx:for="{{wayList}}" wx:key="{{item.TrickID}}">
           <formid-custom bind:taphandle="studyWay" data-wayid="{{item.TrickID}}">
             <view class='study-img'> 
-              <image src='{{item.ImageUrl}}' mode='aspectFill'></image>
+              <image src='{{item.Cover}}' mode='aspectFit'></image>
            </view>
           </formid-custom>
           <formid-custom bind:taphandle="studyWay" data-wayid="{{item.TrickID}}">
@@ -98,6 +98,8 @@
         </view>
     </view>
   </view>
+  <!--底部 抵制低俗  -->
+  <view class='refuse-area'>表情兔抖音表情包版权声明 抵制低俗净化网络</view>
 </view>
 <!--底部线  -->
 <view class='bottom-line'></view>

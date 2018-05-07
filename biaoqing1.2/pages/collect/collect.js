@@ -14,6 +14,7 @@ Page({
     state:[],
     page:1,
     hasMore:true,
+    clickFlag: true,
   },
 
   /**
@@ -127,6 +128,17 @@ Page({
     let state = this.data.state;
     state = state.map((item,index)=>{
       if(index == num){
+        if (item) {
+          wx.showToast({
+            icon:"none",
+            title: '取消收藏成功',
+          })
+        } else {
+          wx.showToast({
+            icon: "none",
+            title: '收藏成功',
+          })
+        }
         item = !item;
       }
       return item;
@@ -134,7 +146,6 @@ Page({
     app.req.add(imgid, groupid, tagid).then(res => {
       console.log(res);
       this.setData({
-        collectFlag: !this.data.collectFlag,
         state: state,
       })
     })
@@ -149,25 +160,49 @@ Page({
       urls: [imgurl],
     })
   },
+  // 跳转详情页
+  goDetail: function (e) {
+    let state = 2;
+    let groupid = e.currentTarget.dataset.groupid;
+    let imgid = e.currentTarget.dataset.imgid;
+    if (this.data.clickFlag) {
+      this.setData({
+        clickFlag: false,
+      })
+      wx.navigateTo({
+        url: '../detail/detail?state=' + state + '&groupid=' + groupid + '&imgid=' + imgid,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+   
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      clickFlag: true,
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    console.log("隐藏")
+    this.setData({
+      hasMore: true,
+      list: [],
+      state: [],
+      page: 1,
+    })
+    // 获取收藏列表
+    this.getList();
   },
 
   /**

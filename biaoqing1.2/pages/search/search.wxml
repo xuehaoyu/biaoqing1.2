@@ -14,12 +14,12 @@
     <view class='self-list'>
       <view class='self-item' wx:for="{{list}}" wx:key="{{item.ImageID}}">
         <formid-custom bind:taphandle="goDetail" data-imgid="{{item.ImageID}}" data-groupid="{{item.GroupID}}">
-          <image src='../../imgs/timg.jpg' mode='aspectFill'></image>
+          <image src='{{item.Url}}' mode='aspectFill'></image>
         </formid-custom>
       </view>
     </view>
   </view>
-  <view class='other-result' hidden='{{!otherFlag}}'>
+  <view class='other-result' wx:if='{{otherFlag && other.length > 0}}'>
     <view class='other-title'>共搜索到{{othernum}}个表情来自其他频道</view>
     <view class='other-list'>
       <view class='other-item' wx:for="{{other}}"  wx:key="{{index}}" hidden='{{item.loadFlag}}'>
@@ -29,4 +29,5 @@
       </view>
     </view>
   </view>
+  <view class='no-area' wx:if='{{noFlag && !otherFlag && other.length > 0}}'>抱歉，未找到相关表情包</view>
 </view>

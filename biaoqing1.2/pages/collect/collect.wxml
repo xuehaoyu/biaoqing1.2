@@ -19,7 +19,7 @@
   <view class='collect-center'></view>
   <view class='collect-list' wx:if="{{list.length > 0}}">
      <view class='collect-item' wx:for="{{list}}" wx:key="{{item.ImageID}}">
-        <formid-custom bind:taphandle="previewImg" data-imgurl="{{item.Url}}">
+        <formid-custom bind:taphandle="goDetail" data-imgurl="{{item.Url}}" data-groupid="{{item.GroupID}}" data-imgid="{{item.ImageID}}">
            <image src='{{item.Url}}' mode='aspectFill'></image>
         </formid-custom>
         <view class='collect-img'>

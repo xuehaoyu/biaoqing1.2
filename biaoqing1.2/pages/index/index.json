@@ -2,5 +2,8 @@
   "usingComponents": {
     "formid-custom": "../../component/formid-custom/formid-custom"
   },
-  "navigationBarTitleText": "表情包"
+  "navigationBarTitleText": "表情包",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#ffdd00",
+  "navigationBarTextStyle": "black"
 }

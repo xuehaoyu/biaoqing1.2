@@ -11,6 +11,7 @@
   <view class='cate-area'>
     <view class='cate-list'>
         <view class='cate-item'  wx:for="{{cateList}}" wx:key="{{item.TagID}}"  style="{{cateSate[index]?'background:#ffffff;':'background:#f7f7f7;'}}" bindtap='selectCate' data-index="{{index}}" data-tagid="{{item.TagID}}">{{item.TagName}}</view>
+        <!-- <view class='cate-item' style="{{otherFlag?'background:#ffffff;':'background:#f7f7f7;'}}" bindtap='selectOther' data-tagid="0">其他</view> -->
     </view>
     <view class='cate-con'>
       <formid-custom bind:taphandle="goDetail" wx:for="{{group}}" wx:key="{{item.GroupID}}" data-groupid="{{item.GroupID}}">

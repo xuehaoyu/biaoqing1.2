@@ -26,17 +26,23 @@ Page({
   },
   // 输入搜索词
   writeFonts:function(e){
-    // console.log(e);
     let fonts = e.detail.value;
-    app.req.check(fonts).then(res=>{
-      console.log(res);
-      if(res.f === 1){
-        fonts = res.d.Text;
-        this.setData({
-          fonts: fonts,
-        })
-      }
-    })
+    console.log(fonts);
+    if (fonts == ""){
+      this.setData({
+        fonts: fonts,
+      })
+    }else{
+      app.req.check(fonts).then(res => {
+        console.log(res);
+        if (res.f === 1) {
+          fonts = res.d.Text;
+          this.setData({
+            fonts: fonts,
+          })
+        }
+      })
+    }
   },
   // 去搜索
   goSearch: function () {
@@ -77,7 +83,7 @@ Page({
     })
   },
   getNew: function () {
-    app.req.group(2, 1).then(res => {
+    app.req.group(2, 1,12).then(res => {
       console.log(res);
       if (res.f === 1) {
         this.setData({
@@ -88,11 +94,12 @@ Page({
   },
   // 获取套路
   getWay:function () {
-    app.req.way(1,3).then(res => {
+    app.req.way().then(res => {
       console.log(res);
       if (res.f === 1) {
+        let wayList = res.d.Results.slice(0,3);
         this.setData({
-          wayList: res.d.Results,
+          wayList: wayList,
         })
       }
     })

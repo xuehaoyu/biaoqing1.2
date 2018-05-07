@@ -12,12 +12,13 @@ Page({
     cateFlag:true,
     cateList:[],
     cateSate:[],
+    otherFlag:false,
 
     tagId:"",
     group:[],
     page:1,
     hasMore:true,
-
+    bottomFLag:true,
     clickFlag:true,
   },
 
@@ -49,19 +50,35 @@ Page({
   },
   getTagsGroup:function(){
     if (!this.data.hasMore) return;
-    app.req.tagGroup(this.data.tagId, this.data.tagId, this.data.cateType,this.data.page).then(res=>{
+    let excludeTagIDs = this.data.tagId;
+    if (this.data.tagId == "0"){
+      excludeTagIDs = "";
+      let cateList = this.data.cateList;
+      console.log(cateList);
+      cateList.forEach((item)=>{
+        if (item.TagID != "0"){
+          excludeTagIDs += item.TagID + ","
+        }
+      })
+      excludeTagIDs = excludeTagIDs.slice(0,-1);
+    }
+    // console.log(excludeTagIDs)
+    app.req.tagGroup(this.data.tagId, excludeTagIDs, this.data.cateType,this.data.page).then(res=>{
       console.log(res);
       if(res.f === 1){
         let hasMore = this.data.hasMore;
         let group = this.data.group;
+        let bottomFLag = true;
         if (res.d.Page * res.d.Pagesize > res.d.TotalCount) {
           hasMore = false;
+          bottomFLag = false;
         }
         group = group.concat(res.d.Results);
         this.setData({
           hasMore: hasMore,
           group: group,
           page: this.data.page + 1,
+          bottomFLag: bottomFLag,
         })
       }
     })
@@ -75,6 +92,7 @@ Page({
         group: [],
         page: 1,
         hasMore: true,
+        otherFlag: false,
       })
       this.getTags();
     }
@@ -113,6 +131,7 @@ Page({
       group:[],
       page:1,
       hasMore:true,
+      otherFlag: false,
     })
     this.getTagsGroup();
   },
@@ -170,7 +189,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getTagsGroup();
+    if (this.data.bottomFLag){
+      console.log("下拉")
+      this.getTagsGroup();
+    }
   },
 
   /**

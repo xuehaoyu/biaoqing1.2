@@ -125,3 +125,12 @@ page{
   width: 156rpx;
   height: 156rpx;
 }
+.no-area{
+  width: 100%;
+  height: auto;
+  padding: 60rpx 0 0 0;
+  color: #666666;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  text-align: center;
+}

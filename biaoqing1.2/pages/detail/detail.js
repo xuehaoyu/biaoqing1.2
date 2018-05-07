@@ -18,6 +18,7 @@ Page({
     // 图片数据
     topImg:{},
     list:[],
+    topList:[],
     tagList:[],
     collectFlag:true,
     // 防双击开关
@@ -44,7 +45,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.share)
+    // console.log(options);
     let state = options.state;
     if (options.share == 1){
       this.setData({
@@ -147,12 +148,14 @@ Page({
       if(res.f === 1){
         let title = res.d.Title;
         let tagList = res.d.TagList;
-        let list = res.d.ImageList;
+        let list = res.d.ImageList.slice(8);
+        let topList = res.d.ImageList.slice(0,8);
+        console.log(list)
+        console.log(topList)
         let topImg = list[0];
         if (state == 2){
           let filter =  list.filter((item)=>{
-            item.ImageID == imgid;
-            return item;
+            return  item.ImageID == imgid;
           }) 
           topImg =  filter[0];
         }
@@ -168,6 +171,7 @@ Page({
           title: title,
           tagList: tagList,
           list: list,
+          topList: topList,
           topImg: topImg,
           collectFlag: collectFlag,
         })
@@ -182,7 +186,7 @@ Page({
   },
   // 下载图
   downImgs:function(){
-    let list = this.data.list;
+    let list = this.data.topList;
     app.req.downloadFile(list[0].Url).then(res => {
       console.log("img1", res.tempFilePath);
       if (res.statusCode === 200) {

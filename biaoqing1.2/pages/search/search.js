@@ -25,6 +25,8 @@ Page({
     otherpage:1,
     otherHas:true,
     othernum:0,
+    // 搜不到表情
+    noFlag:true,
   },
 
   /**
@@ -161,9 +163,10 @@ Page({
             })
           } else {
             wx.hideLoading();
-            console.log("前端请求不到数据")
+            console.log("前端请求不到数据",this.data.other)
             this.setData({
               otherHas:false,
+              noFlag:false,
             })
           }
         },
@@ -181,6 +184,7 @@ Page({
   },
   // 请求 后端 搜狗搜索
   searchOther:function () {
+    wx.hideLoading();
     if (!this.data.otherHas) return;
     let fonts = this.data.fonts;
     app.req.sogosearch(fonts, this.data.otherpage).then(res => {

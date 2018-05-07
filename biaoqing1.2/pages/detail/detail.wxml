@@ -49,13 +49,21 @@
     <view class='group-area'>
         <view class='group-top'>
             <view class='top-line'></view>
-            <view class='top-font'>{{title}}</view>
+            <view class='top-font'>{{title}}相关表情</view>
         </view>
         <view class='tag-list'>
           <formid-custom wx:for="{{tagList}}" wx:key="{{item.TagID}}" bind:taphandle="goDetail" data-tagid="{{item.TagID}}">
             <text>#{{item.TagName}}</text>
           </formid-custom>
         </view>
+        <view class='group-list'>
+            <view class='group-item' wx:for="{{topList}}"  wx:key="{{item.ImageID}}" >
+              <formid-custom bind:taphandle="selectTop" data-topimg="{{item}}">
+                <image src='{{item.Url}}' mode='aspectFill'></image>
+              </formid-custom>
+            </view>
+        </view>
+        <view class='detail-ad'></view>
         <view class='group-list'>
             <view class='group-item' wx:for="{{list}}"  wx:key="{{item.ImageID}}" >
               <formid-custom bind:taphandle="selectTop" data-topimg="{{item}}">

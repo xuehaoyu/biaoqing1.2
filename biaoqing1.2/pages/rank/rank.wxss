@@ -92,3 +92,6 @@
   line-height: 36rpx;
   color: #999999;
 }
+.info-dec text{
+  margin-right: 14rpx;
+}

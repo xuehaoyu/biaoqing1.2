@@ -6,7 +6,8 @@ import {
   setClipboardDataPromisify,
   getStoragePromisify,
   getSettingPromisify,
-  downloadFilePromisify
+  downloadFilePromisify,
+  requestPaymentPromisify
 } from 'Promisify.js'
 
 import {
@@ -398,7 +399,7 @@ module.exports = {
         data: {
           keyword:fonts,
           Page: page,
-          Pagesize:20,
+          Pagesize:30,
         },
         header: {
           cookie: `AppKey=${config.appid};Token=${Token}`
@@ -413,12 +414,12 @@ module.exports = {
       data: {
         keyword: fonts,
         Page: page,
-        Pagesize: 20,
+        Pagesize: 30,
       }
     })
   },
   // 获取表情组
-  group: function (type,page) {
+  group: function (type,page,pagesize=8) {
     return this.login().then(res => {
       let Token = res.Token
       return requestPromisify({
@@ -427,7 +428,7 @@ module.exports = {
         data: {
           type: type,
           Page: page,
-          Pagesize: 8,
+          Pagesize:pagesize,
         },
         header: {
           cookie: `AppKey=${config.appid};Token=${Token}`
@@ -436,16 +437,12 @@ module.exports = {
     })
   },
   // 获取表情套路
-  way:function (page,pagesize=8) {
+  way:function () {
     return this.login().then(res => {
       let Token = res.Token
       return requestPromisify({
         url: url.yewu.way,
         method: 'GET',
-        data: {
-          Page: page,
-          Pagesize:pagesize,
-        },
         header: {
           cookie: `AppKey=${config.appid};Token=${Token}`
         }

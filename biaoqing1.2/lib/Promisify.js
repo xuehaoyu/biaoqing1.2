@@ -49,4 +49,5 @@ module.exports = {
   getStoragePromisify: getStoragePromisify,
   getSettingPromisify: Promisify(wx.getSetting),
   downloadFilePromisify: Promisify(wx.downloadFile),
+  requestPaymentPromisify: Promisify(wx.requestPayment)
 }

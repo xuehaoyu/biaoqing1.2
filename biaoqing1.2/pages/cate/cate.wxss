@@ -88,7 +88,9 @@
 }
 .tag-area{
   font-size: 28rpx;
+  height: 86rpx;
   color: #999999;
+  overflow: auto;
 }
 .tag-area text{
   margin-right: 14rpx;
